@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categories, menuItems } from '../data/menuData';
-import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, Utensils, GlassWater, Leaf, ArrowRight, Clock, Award } from 'lucide-react';
 import { BranchContactSection } from '../components/BranchContactSection';
 
 export const HomePage: React.FC = () => {
-  const { languageMode } = useLanguage();
 
   return (
     <div className="min-h-screen bg-[#fbfbf9] text-stone-800">
@@ -24,9 +22,7 @@ export const HomePage: React.FC = () => {
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-800/80 border border-emerald-500/40 text-emerald-200 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-sm">
                 <Sparkles className="w-4 h-4 text-yellow-300" />
                 <span>
-                  {languageMode === 'am'
-                    ? 'ትኩስ የተፈጥሮ ጁስና ጣፋጭ ምግቦች'
-                    : '100% Pure Natural Juices & Fresh Kitchen'}
+                  100% Pure Natural Juices & Fresh Kitchen | ትኩስ የተፈጥሮ ጁስና ጣፋጭ ምግቦች
                 </span>
               </div>
 
@@ -69,9 +65,7 @@ export const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-base font-bold bg-emerald-500 hover:bg-emerald-400 text-stone-950 transition-all shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Utensils className="w-5 h-5" />
-                  <span>
-                    {languageMode === 'am' ? 'ምድቦችን ይመልከቱ' : 'Explore Our Menu'}
-                  </span>
+                  <span>Explore Our Menu</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
 
@@ -107,20 +101,6 @@ export const HomePage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-
-                {/* Floating Food Card */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-3.5 rounded-2xl shadow-xl border border-stone-200 hidden sm:flex items-center gap-3 max-w-xs">
-                  <img
-                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=80"
-                    alt="Wina Burger"
-                    className="w-14 h-14 rounded-xl object-cover"
-                  />
-                  <div>
-                    <div className="font-bold text-xs text-stone-900">Wina Burger (ዊና በርገር)</div>
-                    <div className="text-[11px] text-stone-500">Fresh Beef Patty & Fries</div>
-                    <div className="font-mono text-xs font-extrabold text-red-700 mt-0.5">620 ETB</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -132,9 +112,7 @@ export const HomePage: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
             <Utensils className="w-3.5 h-3.5" />
-            <span>
-              {languageMode === 'am' ? 'የምናሌ ምድቦች' : 'Explore by Category'}
-            </span>
+            <span>Explore by Category (የምናሌ ምድቦች)</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-stone-900 font-serif tracking-tight">

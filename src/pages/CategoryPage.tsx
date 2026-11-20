@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { categories, menuItems, extraItems, takeAwayItems } from '../data/menuData';
 import { MenuItemCard } from '../components/MenuItemCard';
-import { LanguageToggle } from '../components/LanguageToggle';
 import {
   ArrowLeft,
   Search,
@@ -73,10 +72,8 @@ export const CategoryPage: React.FC = () => {
             </span>
           </div>
 
-          {/* Controls: Back Button & Language Switcher */}
+          {/* Controls: Back Button */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <LanguageToggle compact={true} />
-
             <button
               onClick={() => navigate('/#categories')}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors"

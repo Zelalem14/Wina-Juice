@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, MapPin, ChevronDown, QrCode } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
-import { LanguageToggle } from './LanguageToggle';
 
 interface NavbarProps {
   onOpenQRCode: () => void;
@@ -104,9 +103,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Action Items */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language Switcher */}
-            <LanguageToggle compact={false} />
-
             {/* Table QR Button */}
             <button
               onClick={onOpenQRCode}

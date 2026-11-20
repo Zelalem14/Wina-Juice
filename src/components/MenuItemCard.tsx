@@ -1,6 +1,5 @@
 import React from 'react';
 import { MenuItem, MenuCategory } from '../types';
-import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, Leaf, Fish } from 'lucide-react';
 
 interface MenuItemCardProps {
@@ -9,7 +8,6 @@ interface MenuItemCardProps {
 }
 
 export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) => {
-  const { languageMode } = useLanguage();
   const theme = category?.themeColor || 'red';
 
   // Physical menu border colors
@@ -35,40 +33,21 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) =>
         {/* Top Header: Title, Special Badge, Price */}
         <div className="flex items-start justify-between gap-3 mb-2">
           <div className="flex-1 min-w-0">
-            {/* AMHARIC FIRST / SUBTITLE BASED ON LANGUAGE MODE */}
-            {languageMode === 'am' ? (
-              <>
-                <h3 className="text-lg sm:text-xl font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight">
-                  {item.nameAm}
-                </h3>
-                <p className="text-xs text-stone-500 font-medium">{item.nameEn}</p>
-              </>
-            ) : languageMode === 'en' ? (
-              <>
-                <h3 className="text-lg sm:text-xl font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight">
-                  {item.nameEn}
-                </h3>
-                <p className="text-xs text-stone-500 font-medium font-sans">{item.nameAm}</p>
-              </>
-            ) : (
-              /* BOTH LANGUAGES (Clean, stacked format as requested) */
-              <>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs sm:text-sm font-bold text-emerald-800">
-                    {item.nameAm}
-                  </span>
-                  {item.featured && (
-                    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
-                      <Sparkles className="w-2.5 h-2.5 text-amber-600" />
-                      Special
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-base sm:text-lg font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight mt-0.5">
-                  {item.nameEn}
-                </h3>
-              </>
-            )}
+            {/* Naturally displayed Amharic & English names */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-xs sm:text-sm font-bold text-emerald-800">
+                {item.nameAm}
+              </span>
+              {item.featured && (
+                <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                  <Sparkles className="w-2.5 h-2.5 text-amber-600" />
+                  Special
+                </span>
+              )}
+            </div>
+            <h3 className="text-base sm:text-lg font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight mt-0.5">
+              {item.nameEn}
+            </h3>
           </div>
 
           {/* Price Badge in ETB */}
@@ -87,17 +66,15 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) =>
         {/* Dot Leader Visual Divider */}
         <div className="w-full border-b border-dashed border-stone-200 my-2.5" />
 
-        {/* DESCRIPTIONS */}
+        {/* Naturally displayed English & Amharic descriptions */}
         <div className="space-y-1.5 text-xs sm:text-[13px] leading-relaxed mb-4">
-          {/* English Description */}
-          {(languageMode === 'both' || languageMode === 'en') && item.descriptionEn && (
+          {item.descriptionEn && (
             <p className="text-stone-600 font-normal">
               {item.descriptionEn}
             </p>
           )}
 
-          {/* Amharic Description (የምግቡ መግለጫ በአማርኛ) */}
-          {(languageMode === 'both' || languageMode === 'am') && item.descriptionAm && (
+          {item.descriptionAm && (
             <p className="text-stone-800 font-medium text-xs sm:text-[13px]">
               <span className="text-stone-400 font-normal mr-1">•</span>
               {item.descriptionAm}
