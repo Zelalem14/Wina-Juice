@@ -55,14 +55,12 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center justify-between gap-3 sm:gap-6">
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3">
-            <div className="relative flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-500 shadow-inner p-1.5">
-              {/* Stylized Wina Juice Logo based on Menu Photo */}
-              <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm">
-                <path d="M 50 12 C 53 6 62 4 66 7 C 64 12 56 16 50 12 Z" fill="#16a34a" />
-                <path d="M 46 18 C 48 13 52 11 53 11" stroke="#15803d" strokeWidth="3" strokeLinecap="round" fill="none" />
-                <path d="M 28 32 C 22 46 22 68 36 78 C 45 84 55 84 64 78 C 78 68 78 46 72 32 C 67 42 61 58 50 58 C 39 58 33 42 28 32 Z" fill="#15803d" />
-                <text x="50" y="52" textAnchor="middle" fill="#ffffff" fontSize="12" fontWeight="bold">W</text>
-              </svg>
+            <div className="relative flex items-center justify-center w-11 h-11 sm:w-13 sm:h-13 rounded-2xl overflow-hidden shadow-sm border border-stone-200/80 bg-white">
+              <img
+                src="/wina-logo.png"
+                alt="Wina Juice Official Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <div>

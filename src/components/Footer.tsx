@@ -13,8 +13,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
           {/* Brand Info */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-800 border border-emerald-600 flex items-center justify-center p-1 text-white font-bold text-lg">
-                W
+              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-sm border border-stone-700 bg-white">
+                <img
+                  src="/wina-logo.png"
+                  alt="Wina Juice Official Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <span className="text-2xl font-extrabold text-white font-serif tracking-tight">

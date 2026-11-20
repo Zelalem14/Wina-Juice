@@ -176,13 +176,13 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
                 id="printable-card"
                 className="w-full max-w-sm bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-950 text-white p-6 rounded-3xl shadow-xl border-4 border-emerald-600 flex flex-col items-center text-center relative overflow-hidden"
               >
-                {/* Decorative Top Leaf */}
-                <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center p-2 mb-3 shadow-inner">
-                  <svg viewBox="0 0 100 100" className="w-full h-full">
-                    <path d="M 50 12 C 53 6 62 4 66 7 C 64 12 56 16 50 12 Z" fill="#4ade80" />
-                    <path d="M 28 32 C 22 46 22 68 36 78 C 45 84 55 84 64 78 C 78 68 78 46 72 32 C 67 42 61 58 50 58 C 39 58 33 42 28 32 Z" fill="#22c55e" />
-                    <text x="50" y="52" textAnchor="middle" fill="#ffffff" fontSize="14" fontWeight="bold">W</text>
-                  </svg>
+                {/* Authentic Wina Juice Brand Logo */}
+                <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-lg border-2 border-emerald-400/50 mb-3 bg-white">
+                  <img
+                    src="/wina-logo.png"
+                    alt="Wina Juice Logo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <h4 className="text-2xl font-extrabold font-serif text-white tracking-tight">
