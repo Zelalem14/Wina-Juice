@@ -109,7 +109,7 @@ export const categories: MenuCategory[] = [
     themeColor: 'green',
     side: 1,
     description: 'Add-on cheeses, sauces, injera, and hygienic takeaway packaging',
-    image: 'https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=1200&q=80'
+    image: '/images/extra-takeaway.jpg'
   }
 ];
 
