@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Search, MapPin, X, ChevronDown } from 'lucide-react';
+import { Phone, Search, MapPin, X, ChevronDown, QrCode } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
 
 interface HeaderProps {
@@ -7,6 +7,7 @@ interface HeaderProps {
   setSearchQuery: (query: string) => void;
   selectedBranch: string;
   setSelectedBranch: (branchId: string) => void;
+  onOpenQRCode?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -14,6 +15,7 @@ export const Header: React.FC<HeaderProps> = ({
   setSearchQuery,
   selectedBranch,
   setSelectedBranch,
+  onOpenQRCode,
 }) => {
   const [showBranchDropdown, setShowBranchDropdown] = useState(false);
   const currentBranch = branchContacts.find((b) => b.id === selectedBranch) || branchContacts[0];
@@ -100,6 +102,19 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* QR Code / Table Stand Button */}
+            {onOpenQRCode && (
+              <button
+                onClick={onOpenQRCode}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 hover:border-emerald-400 transition-all shadow-sm"
+                title="View & Download Table QR Code"
+              >
+                <QrCode className="w-4 h-4 text-emerald-600" />
+                <span className="hidden sm:inline">Table QR</span>
+                <span className="sm:hidden">QR</span>
+              </button>
+            )}
+
             {/* Branch Phone Quick Call Dropdown */}
             <div className="relative">
               <button

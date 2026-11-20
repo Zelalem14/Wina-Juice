@@ -6,6 +6,7 @@ import { MenuItemCard } from './components/MenuItemCard';
 import { ExtraAndTakeawaySection } from './components/ExtraAndTakeawaySection';
 import { BranchContactSection } from './components/BranchContactSection';
 import { Footer } from './components/Footer';
+import { QRCodeModal } from './components/QRCodeModal';
 import { categories, menuItems, branchContacts } from './data/menuData';
 import { ArrowUp, UtensilsCrossed, Sparkles } from 'lucide-react';
 
@@ -14,6 +15,7 @@ export function App() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeDietaryFilter, setActiveDietaryFilter] = useState<'fasting' | 'vegetarian' | 'chicken' | 'beef' | 'fish' | 'juice' | null>(null);
   const [selectedBranch, setSelectedBranch] = useState(branchContacts[0].id);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
   // Compute item count per category for badges
   const itemCounts = useMemo(() => {
@@ -86,6 +88,7 @@ export function App() {
         setSearchQuery={setSearchQuery}
         selectedBranch={selectedBranch}
         setSelectedBranch={setSelectedBranch}
+        onOpenQRCode={() => setIsQRModalOpen(true)}
       />
 
       {/* Hero Section */}
@@ -250,7 +253,13 @@ export function App() {
       <BranchContactSection />
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenQRCode={() => setIsQRModalOpen(true)} />
+
+      {/* QR Code & Printable Table Card Modal */}
+      <QRCodeModal
+        isOpen={isQRModalOpen}
+        onClose={() => setIsQRModalOpen(false)}
+      />
 
       {/* Back to top floating button */}
       <button

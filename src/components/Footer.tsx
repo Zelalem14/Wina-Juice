@@ -1,7 +1,11 @@
 import React from 'react';
-import { Heart, ShieldCheck, Clock, MapPin } from 'lucide-react';
+import { Heart, ShieldCheck, Clock, MapPin, QrCode } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenQRCode?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
   return (
     <footer className="bg-stone-900 text-stone-300 pt-12 pb-8 px-4 border-t border-stone-800">
       <div className="max-w-7xl mx-auto">
@@ -59,13 +63,24 @@ export const Footer: React.FC = () => {
                 Fresh juices, smoothies, dine-in & takeaway prepared daily across all 6 branches.
               </p>
             </div>
-            <a
-              href="#branches-section"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 transition-all shadow-sm"
-            >
-              <MapPin className="w-3.5 h-3.5" />
-              <span>View All 6 Branches</span>
-            </a>
+            <div className="flex items-center gap-2 flex-wrap">
+              <a
+                href="#branches-section"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 transition-all shadow-sm"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                <span>View All 6 Branches</span>
+              </a>
+              {onOpenQRCode && (
+                <button
+                  onClick={onOpenQRCode}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-stone-800 text-stone-200 border border-stone-700 hover:bg-stone-700 hover:text-white transition-all shadow-sm"
+                >
+                  <QrCode className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Table QR Code</span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
