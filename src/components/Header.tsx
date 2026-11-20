@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Phone, Image as ImageIcon, Search, MapPin, X, ChevronDown } from 'lucide-react';
+import { Phone, Search, MapPin, X, ChevronDown } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
 
 interface HeaderProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  onOpenOriginalMenu: () => void;
   selectedBranch: string;
   setSelectedBranch: (branchId: string) => void;
 }
@@ -13,7 +12,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   searchQuery,
   setSearchQuery,
-  onOpenOriginalMenu,
   selectedBranch,
   setSelectedBranch,
 }) => {
@@ -102,17 +100,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* View Original Menu Button */}
-            <button
-              onClick={onOpenOriginalMenu}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 hover:border-emerald-400 transition-all shadow-sm"
-              title="View the physical photographed menu"
-            >
-              <ImageIcon className="w-4 h-4 text-emerald-600" />
-              <span className="hidden sm:inline">Original Menu Photo</span>
-              <span className="sm:hidden">Photo Menu</span>
-            </button>
-
             {/* Branch Phone Quick Call Dropdown */}
             <div className="relative">
               <button

@@ -1,11 +1,7 @@
 import React from 'react';
-import { Eye, Heart, ShieldCheck } from 'lucide-react';
+import { Heart, ShieldCheck, Clock, MapPin } from 'lucide-react';
 
-interface FooterProps {
-  onOpenOriginalMenu: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenOriginalMenu }) => {
+export const Footer: React.FC = () => {
   return (
     <footer className="bg-stone-900 text-stone-300 pt-12 pb-8 px-4 border-t border-stone-800">
       <div className="max-w-7xl mx-auto">
@@ -30,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOriginalMenu }) => {
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-300">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>100% Digitized from Official Physical Menu</span>
+              <span>100% Fresh Natural Juices & Dine-In / Takeaway</span>
             </div>
           </div>
 
@@ -49,21 +45,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOriginalMenu }) => {
             </ul>
           </div>
 
-          {/* Actions & Verification */}
+          {/* Opening Hours & Branches */}
           <div>
             <h4 className="text-white font-bold text-sm mb-3 uppercase tracking-wider">
-              Menu Verification
+              Opening Hours
             </h4>
-            <p className="text-xs text-stone-400 mb-3 leading-relaxed">
-              Every item, price in ETB, and description on this site is directly copied from the original restaurant menu photograph.
-            </p>
-            <button
-              onClick={onOpenOriginalMenu}
+            <div className="space-y-2 text-xs text-stone-400 mb-4">
+              <div className="flex items-center gap-2 text-stone-300 font-medium">
+                <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span>Mon – Sun: 7:00 AM – 10:00 PM</span>
+              </div>
+              <p className="leading-relaxed">
+                Fresh juices, smoothies, dine-in & takeaway prepared daily across all 6 branches.
+              </p>
+            </div>
+            <a
+              href="#branches-section"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 transition-all shadow-sm"
             >
-              <Eye className="w-3.5 h-3.5" />
-              <span>Inspect Photo Reference</span>
-            </button>
+              <MapPin className="w-3.5 h-3.5" />
+              <span>View All 6 Branches</span>
+            </a>
           </div>
         </div>
 

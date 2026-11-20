@@ -6,7 +6,6 @@ import { MenuItemCard } from './components/MenuItemCard';
 import { ExtraAndTakeawaySection } from './components/ExtraAndTakeawaySection';
 import { BranchContactSection } from './components/BranchContactSection';
 import { Footer } from './components/Footer';
-import { OriginalMenuModal } from './components/OriginalMenuModal';
 import { categories, menuItems, branchContacts } from './data/menuData';
 import { ArrowUp, UtensilsCrossed, Sparkles } from 'lucide-react';
 
@@ -14,7 +13,6 @@ export function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeDietaryFilter, setActiveDietaryFilter] = useState<'fasting' | 'vegetarian' | 'chicken' | 'beef' | 'fish' | 'juice' | null>(null);
-  const [isOriginalMenuOpen, setIsOriginalMenuOpen] = useState(false);
   const [selectedBranch, setSelectedBranch] = useState(branchContacts[0].id);
 
   // Compute item count per category for badges
@@ -86,14 +84,12 @@ export function App() {
       <Header
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        onOpenOriginalMenu={() => setIsOriginalMenuOpen(true)}
         selectedBranch={selectedBranch}
         setSelectedBranch={setSelectedBranch}
       />
 
       {/* Hero Section */}
       <Hero
-        onOpenOriginalMenu={() => setIsOriginalMenuOpen(true)}
         activeDietaryFilter={activeDietaryFilter}
         setActiveDietaryFilter={setActiveDietaryFilter}
         itemCount={menuItems.length}
@@ -108,7 +104,7 @@ export function App() {
       />
 
       {/* Main Menu Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-8">
+      <main id="menu-section" className="flex-1 max-w-7xl w-full mx-auto px-4 py-8">
         {/* Active Filters / Status Banner */}
         {(searchQuery || activeCategory || activeDietaryFilter) && (
           <div className="mb-6 p-4 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-wrap items-center justify-between gap-3 text-sm">
@@ -226,7 +222,7 @@ export function App() {
         {/* Extra Toppings & Takeaway Packaging Section */}
         <ExtraAndTakeawaySection />
 
-        {/* Verification Callout Box */}
+        {/* Quality Banner */}
         <div className="mt-8 p-6 rounded-3xl bg-gradient-to-r from-emerald-50 via-white to-red-50 border border-stone-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-3 rounded-2xl bg-emerald-700 text-white">
@@ -234,19 +230,19 @@ export function App() {
             </div>
             <div>
               <h3 className="font-bold text-base text-stone-900 font-serif">
-                100% Faithful to Wina Juice Physical Menu
+                Fresh Natural Quality at Wina Juice
               </h3>
               <p className="text-xs text-stone-600">
-                All 106 items, prices in Ethiopian Birr (ETB), descriptions, and branch phones are accurately digitized without modifications.
+                All 106 juices, smoothies, burgers, pizzas, and traditional dishes are freshly prepared daily across our 6 Addis Ababa branches.
               </p>
             </div>
           </div>
-          <button
-            onClick={() => setIsOriginalMenuOpen(true)}
-            className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-white text-emerald-800 border border-emerald-300 hover:bg-emerald-50 transition-all shadow-sm shrink-0"
+          <a
+            href="#branches-section"
+            className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white hover:bg-emerald-800 transition-all shadow-sm shrink-0"
           >
-            Compare with Original Photo
-          </button>
+            Call / Order from Nearest Branch
+          </a>
         </div>
       </main>
 
@@ -254,13 +250,7 @@ export function App() {
       <BranchContactSection />
 
       {/* Footer */}
-      <Footer onOpenOriginalMenu={() => setIsOriginalMenuOpen(true)} />
-
-      {/* Original Physical Menu Lightbox Modal */}
-      <OriginalMenuModal
-        isOpen={isOriginalMenuOpen}
-        onClose={() => setIsOriginalMenuOpen(false)}
-      />
+      <Footer />
 
       {/* Back to top floating button */}
       <button

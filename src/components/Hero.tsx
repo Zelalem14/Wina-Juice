@@ -1,15 +1,13 @@
 import React from 'react';
-import { Sparkles, Utensils, GlassWater, Leaf, Eye, PhoneCall } from 'lucide-react';
+import { Sparkles, Utensils, GlassWater, Leaf, PhoneCall } from 'lucide-react';
 
 interface HeroProps {
-  onOpenOriginalMenu: () => void;
   activeDietaryFilter: string | null;
   setActiveDietaryFilter: (tag: any) => void;
   itemCount: number;
 }
 
 export const Hero: React.FC<HeroProps> = ({
-  onOpenOriginalMenu,
   activeDietaryFilter,
   setActiveDietaryFilter,
   itemCount,
@@ -55,13 +53,13 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-              <button
-                onClick={onOpenOriginalMenu}
+              <a
+                href="#menu-section"
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-emerald-900 hover:bg-emerald-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
               >
-                <Eye className="w-4 h-4 text-emerald-700" />
-                Inspect Original Menu Photo
-              </button>
+                <Utensils className="w-4 h-4 text-emerald-700" />
+                Explore Full Menu
+              </a>
               <a
                 href="#branches-section"
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-emerald-700/60 hover:bg-emerald-700 text-white border border-emerald-500/50 transition-all"
