@@ -23,8 +23,8 @@ A modern, responsive digital menu website for **Wina Juice**, built with **React
   - Summit (ስሚት): `0961-33 35 55`
   - Bole (ቦሌ): `0975-33 25 33`
   - Piazza (ፒያሳ): `0905-50 50 42`
-  - Shibo (ሽቦ): `0987-27 27 27`
-  - Arat Kilo (አራት ኪሎ): `0945-29 29 29`
+  - Shola (ሾላ): `0987-27 27 27`
+  - Adisu Gebeya (አዲሱ ገበያ): `0945-29 29 29`
   - Ras Desta (ራስ ደስታ): `0931-00 33 00`
   - Direct one-click phone dial links on mobile and desktop.
 - **Fully Responsive**: Optimized for smartphones, tablets, laptops, and large desktop screens without horizontal scroll.

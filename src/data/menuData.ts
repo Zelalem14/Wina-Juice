@@ -1079,20 +1079,20 @@ export const branchContacts: BranchContact[] = [
     location: 'Piazza Branch, Addis Ababa'
   },
   {
-    id: 'shibo',
-    nameAm: 'ሽቦ',
-    nameEn: 'Shibo',
+    id: 'shola',
+    nameAm: 'ሾላ',
+    nameEn: 'Shola',
     phone: '0987-27 27 27',
     telUri: 'tel:+251987272727',
-    location: 'Shibo Branch, Addis Ababa'
+    location: 'Shola Branch, Addis Ababa'
   },
   {
-    id: 'arat-kilo',
-    nameAm: 'አራት ኪሎ',
-    nameEn: 'Arat Kilo',
+    id: 'adisu-gebeya',
+    nameAm: 'አዲሱ ገበያ',
+    nameEn: 'Adisu Gebeya',
     phone: '0945-29 29 29',
     telUri: 'tel:+251945292929',
-    location: 'Arat Kilo Branch, Addis Ababa'
+    location: 'Adisu Gebeya Branch, Addis Ababa'
   },
   {
     id: 'ras-desta',
