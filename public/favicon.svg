@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+    <linearGradient id="wGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+  </defs>
+  <!-- Apple Stem & Leaf -->
+  <path d="M 52 14 C 54 8 64 6 68 8 C 66 14 58 18 52 14 Z" fill="url(#leafGrad)" />
+  <path d="M 48 20 C 50 14 54 12 55 12" stroke="#166534" stroke-width="3" stroke-linecap="round" fill="none" />
+  <!-- Stylized Apple W Shape -->
+  <path d="M 28 32 C 22 45 22 68 36 78 C 45 84 55 84 64 78 C 78 68 78 45 72 32 C 67 42 61 58 50 58 C 39 58 33 42 28 32 Z" fill="url(#wGrad)" />
+  <circle cx="50" cy="46" r="6" fill="#ffffff" opacity="0.3" />
+</svg>
