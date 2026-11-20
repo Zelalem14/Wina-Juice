@@ -20,6 +20,7 @@ export interface MenuCategory {
   themeColor: 'red' | 'green' | 'teal';
   side: 1 | 2;
   description?: string;
+  image: string;
 }
 
 export interface BranchContact {

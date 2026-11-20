@@ -8,7 +8,8 @@ export const categories: MenuCategory[] = [
     iconName: 'GlassWater',
     themeColor: 'red',
     side: 2,
-    description: 'Fresh power blends, smoothies, and refreshing mojitos'
+    description: 'Fresh power blends, smoothies, and refreshing mojitos',
+    image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'seasonal-juice',
@@ -17,7 +18,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Citrus',
     themeColor: 'red',
     side: 2,
-    description: '100% natural freshly squeezed fruit juices and fruit salads'
+    description: '100% natural freshly squeezed fruit juices and fruit salads',
+    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'burgers',
@@ -26,7 +28,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Sandwich',
     themeColor: 'red',
     side: 1,
-    description: 'Freshly grilled beef burgers, club sandwiches, and crispy french fries'
+    description: 'Freshly grilled beef burgers, club sandwiches, and crispy french fries',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'pizza',
@@ -35,7 +38,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Pizza',
     themeColor: 'red',
     side: 1,
-    description: 'Oven-baked pizzas with generous toppings and mozzarella'
+    description: 'Oven-baked pizzas with generous toppings and mozzarella',
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'fried-chicken',
@@ -44,7 +48,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Drumstick',
     themeColor: 'red',
     side: 1,
-    description: 'Crispy fried drumsticks, wings, nuggets, and chicken sandwiches'
+    description: 'Crispy fried drumsticks, wings, nuggets, and chicken sandwiches',
+    image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'wraps',
@@ -53,7 +58,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Salad',
     themeColor: 'teal',
     side: 2,
-    description: 'Rolled tortillas packed with seasoned fillings and cheese'
+    description: 'Rolled tortillas packed with seasoned fillings and cheese',
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'traditional-dishes',
@@ -62,7 +68,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Utensils',
     themeColor: 'red',
     side: 1,
-    description: 'Authentic Ethiopian firfir, shiro, tegabino, and whole fish'
+    description: 'Authentic Ethiopian firfir, shiro, tegabino, and whole fish',
+    image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'vegitable',
@@ -71,7 +78,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Carrot',
     themeColor: 'green',
     side: 2,
-    description: 'Healthy fasting vegetable platters, salad medleys, and tuna bowls'
+    description: 'Healthy fasting vegetable platters, salad medleys, and tuna bowls',
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'spaghetti-rice',
@@ -80,7 +88,8 @@ export const categories: MenuCategory[] = [
     iconName: 'Soup',
     themeColor: 'green',
     side: 2,
-    description: 'Classic pasta dishes, rice specialties, and Wina Trio combinations'
+    description: 'Classic pasta dishes, rice specialties, and Wina Trio combinations',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=80'
   },
   {
     id: 'kids-menu',
@@ -89,7 +98,18 @@ export const categories: MenuCategory[] = [
     iconName: 'Smile',
     themeColor: 'green',
     side: 1,
-    description: 'Kid-portioned mini burgers and pizzas made specially for children'
+    description: 'Kid-portioned mini burgers and pizzas made specially for children',
+    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    id: 'extra-takeaway',
+    nameAm: 'ተጨማሪ እና ማሸጊያ',
+    nameEn: 'Extra & Takeaway',
+    iconName: 'PackageCheck',
+    themeColor: 'green',
+    side: 1,
+    description: 'Add-on cheeses, sauces, injera, and hygienic takeaway packaging',
+    image: 'https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=1200&q=80'
   }
 ];
 

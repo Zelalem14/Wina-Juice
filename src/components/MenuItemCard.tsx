@@ -1,5 +1,6 @@
 import React from 'react';
 import { MenuItem, MenuCategory } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, Leaf, Fish } from 'lucide-react';
 
 interface MenuItemCardProps {
@@ -8,21 +9,19 @@ interface MenuItemCardProps {
 }
 
 export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) => {
+  const { languageMode } = useLanguage();
   const theme = category?.themeColor || 'red';
 
   // Physical menu border colors
   let cardBorderClass = 'border-red-200 hover:border-red-500 hover:shadow-red-50';
-  let badgeColorClass = 'bg-red-50 text-red-700 border-red-200';
-  let priceBgClass = 'bg-red-50 text-red-800';
+  let priceBgClass = 'bg-red-50 text-red-800 border-red-200';
 
   if (theme === 'green') {
     cardBorderClass = 'border-emerald-200 hover:border-emerald-500 hover:shadow-emerald-50';
-    badgeColorClass = 'bg-emerald-50 text-emerald-800 border-emerald-200';
-    priceBgClass = 'bg-emerald-50 text-emerald-800';
+    priceBgClass = 'bg-emerald-50 text-emerald-800 border-emerald-200';
   } else if (theme === 'teal') {
     cardBorderClass = 'border-cyan-200 hover:border-cyan-500 hover:shadow-cyan-50';
-    badgeColorClass = 'bg-cyan-50 text-cyan-800 border-cyan-200';
-    priceBgClass = 'bg-cyan-50 text-cyan-800';
+    priceBgClass = 'bg-cyan-50 text-cyan-800 border-cyan-200';
   }
 
   const isFasting = item.dietary?.includes('fasting');
@@ -30,92 +29,114 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) =>
 
   return (
     <div
-      className={`relative bg-white rounded-2xl p-4 sm:p-5 border ${cardBorderClass} shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group`}
+      className={`bg-white rounded-3xl p-5 sm:p-6 border-2 ${cardBorderClass} shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group`}
     >
-      {/* Top Section: Title, Dot Leader, Price */}
       <div>
-        <div className="flex items-start justify-between gap-2 mb-1.5">
-          {/* Item Names */}
+        {/* Top Header: Title, Special Badge, Price */}
+        <div className="flex items-start justify-between gap-3 mb-2">
           <div className="flex-1 min-w-0">
-            {/* Amharic Name (from original menu) */}
-            <div className="text-sm font-bold text-stone-900 group-hover:text-emerald-700 transition-colors flex items-center gap-1.5">
-              <span>{item.nameAm}</span>
-              {item.featured && (
-                <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
-                  <Sparkles className="w-2.5 h-2.5 text-amber-600" />
-                  House Special
-                </span>
-              )}
-            </div>
-
-            {/* English Name (from original menu) */}
-            <h3 className="text-base sm:text-lg font-extrabold text-stone-800 tracking-tight leading-snug">
-              {item.nameEn}
-            </h3>
+            {/* AMHARIC FIRST / SUBTITLE BASED ON LANGUAGE MODE */}
+            {languageMode === 'am' ? (
+              <>
+                <h3 className="text-lg sm:text-xl font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight">
+                  {item.nameAm}
+                </h3>
+                <p className="text-xs text-stone-500 font-medium">{item.nameEn}</p>
+              </>
+            ) : languageMode === 'en' ? (
+              <>
+                <h3 className="text-lg sm:text-xl font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight">
+                  {item.nameEn}
+                </h3>
+                <p className="text-xs text-stone-500 font-medium font-sans">{item.nameAm}</p>
+              </>
+            ) : (
+              /* BOTH LANGUAGES (Clean, stacked format as requested) */
+              <>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-xs sm:text-sm font-bold text-emerald-800">
+                    {item.nameAm}
+                  </span>
+                  {item.featured && (
+                    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                      <Sparkles className="w-2.5 h-2.5 text-amber-600" />
+                      Special
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-base sm:text-lg font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight mt-0.5">
+                  {item.nameEn}
+                </h3>
+              </>
+            )}
           </div>
 
-          {/* Price Badge */}
+          {/* Price Badge in ETB */}
           <div className="shrink-0 text-right">
-            <div className={`px-2.5 py-1 rounded-xl font-mono font-extrabold text-base sm:text-lg ${priceBgClass} border border-stone-200/60 shadow-sm`}>
+            <div className={`px-3 py-1.5 rounded-2xl font-mono font-extrabold text-base sm:text-lg ${priceBgClass} border shadow-sm`}>
               {item.price} <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-stone-500">ETB</span>
             </div>
             {item.priceNote && (
-              <span className="text-[10px] text-amber-600 block mt-0.5 font-medium max-w-[120px] leading-tight" title={item.priceNote}>
-                *Note: {item.priceNote}
+              <span className="text-[10px] text-amber-600 block mt-1 font-medium max-w-[120px] leading-tight" title={item.priceNote}>
+                *{item.priceNote}
               </span>
             )}
           </div>
         </div>
 
-        {/* Dot Leader Visual Divider (Physical menu style) */}
-        <div className="w-full border-b border-dashed border-stone-200 my-2" />
+        {/* Dot Leader Visual Divider */}
+        <div className="w-full border-b border-dashed border-stone-200 my-2.5" />
 
-        {/* Amharic Ingredients / Description */}
-        {item.descriptionAm && (
-          <p className="text-xs sm:text-[13px] text-stone-600 font-medium leading-relaxed mb-1">
-            {item.descriptionAm}
-          </p>
-        )}
+        {/* DESCRIPTIONS */}
+        <div className="space-y-1.5 text-xs sm:text-[13px] leading-relaxed mb-4">
+          {/* English Description */}
+          {(languageMode === 'both' || languageMode === 'en') && item.descriptionEn && (
+            <p className="text-stone-600 font-normal">
+              {item.descriptionEn}
+            </p>
+          )}
 
-        {/* English Description */}
-        {item.descriptionEn && (
-          <p className="text-[11px] sm:text-xs text-stone-400 leading-relaxed italic mb-3">
-            {item.descriptionEn}
-          </p>
-        )}
+          {/* Amharic Description (የምግቡ መግለጫ በአማርኛ) */}
+          {(languageMode === 'both' || languageMode === 'am') && item.descriptionAm && (
+            <p className="text-stone-800 font-medium text-xs sm:text-[13px]">
+              <span className="text-stone-400 font-normal mr-1">•</span>
+              {item.descriptionAm}
+            </p>
+          )}
+        </div>
       </div>
 
-      {/* Bottom Dietary & Category Tags */}
-      <div className="pt-2 flex flex-wrap items-center gap-1.5 text-[11px] mt-auto border-t border-stone-100">
-        {category && (
-          <span className={`px-2 py-0.5 rounded-md font-semibold text-[10px] border ${badgeColorClass}`}>
-            {category.nameEn}
-          </span>
-        )}
-
+      {/* Dietary Tags Bottom Row */}
+      <div className="pt-3 border-t border-stone-100 flex flex-wrap items-center gap-1.5 text-[11px] mt-auto">
         {isFasting && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-100/70 text-emerald-800 text-[10px] font-bold border border-emerald-300">
-            <Leaf className="w-2.5 h-2.5 text-emerald-600" />
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-emerald-100/80 text-emerald-800 text-[11px] font-bold border border-emerald-300">
+            <Leaf className="w-3 h-3 text-emerald-600" />
             የፆም / Fasting
           </span>
         )}
 
         {isFish && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-semibold border border-blue-200">
-            <Fish className="w-2.5 h-2.5 text-blue-500" />
-            Fish / ቱና
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-blue-50 text-blue-700 text-[11px] font-semibold border border-blue-200">
+            <Fish className="w-3 h-3 text-blue-500" />
+            Fish / አሳ
           </span>
         )}
 
         {item.dietary?.includes('chicken') && (
-          <span className="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 text-[10px] font-medium border border-amber-200">
+          <span className="px-2.5 py-0.5 rounded-lg bg-amber-50 text-amber-800 text-[11px] font-medium border border-amber-200">
             Chicken / ዶሮ
           </span>
         )}
 
         {item.dietary?.includes('beef') && (
-          <span className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 text-[10px] font-medium border border-stone-200">
+          <span className="px-2.5 py-0.5 rounded-lg bg-stone-100 text-stone-700 text-[11px] font-medium border border-stone-200">
             Beef / ስጋ
+          </span>
+        )}
+
+        {item.dietary?.includes('juice') && (
+          <span className="px-2.5 py-0.5 rounded-lg bg-purple-50 text-purple-700 text-[11px] font-medium border border-purple-200">
+            100% Fresh
           </span>
         )}
       </div>
