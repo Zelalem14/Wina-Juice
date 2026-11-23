@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Utensils, MapPin, Phone } from 'lucide-react';
-import { branchContacts } from '../data/menuData';
 
 interface MobileBottomNavProps {
-  selectedBranch: string;
+  selectedBranch?: string;
+  onOpenCallModal?: () => void;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
-  selectedBranch,
+  onOpenCallModal,
 }) => {
   const location = useLocation();
-  const currentBranch = branchContacts.find((b) => b.id === selectedBranch) || branchContacts[0];
 
   return (
     <nav
@@ -57,17 +56,18 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <span className="text-[10px] mt-0.5">Branches</span>
       </Link>
 
-      {/* 4. Direct Call */}
-      <a
-        href={currentBranch.telUri}
-        className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-red-700 hover:text-red-800 transition-all font-semibold"
-        title={`Call ${currentBranch.nameEn} Branch (${currentBranch.phone})`}
+      {/* 4. Branch Call Action (Opens branch call popup) */}
+      <button
+        onClick={onOpenCallModal}
+        className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-red-700 hover:text-red-800 transition-all font-semibold active:scale-95"
+        title="Call a Wina Juice Branch"
+        aria-label="Call a Wina Juice Branch"
       >
         <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center">
           <Phone className="w-3 h-3 text-red-700" />
         </div>
         <span className="text-[10px] mt-0.5">Call</span>
-      </a>
+      </button>
     </nav>
   );
 };

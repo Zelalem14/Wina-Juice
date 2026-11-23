@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { QRCodeModal } from './components/QRCodeModal';
+import { CallBranchModal } from './components/CallBranchModal';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { HomePage } from './pages/HomePage';
 import { MenuPage } from './pages/MenuPage';
@@ -15,6 +16,7 @@ import { ArrowUp } from 'lucide-react';
 export function App() {
   const [selectedBranch, setSelectedBranch] = useState(branchContacts[0].id);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -38,6 +40,7 @@ export function App() {
             onOpenQRCode={() => setIsQRModalOpen(true)}
             selectedBranch={selectedBranch}
             setSelectedBranch={setSelectedBranch}
+            onOpenCallModal={() => setIsCallModalOpen(true)}
           />
 
           {/* Page Routing (pb-16 on mobile for bottom navigation bar clearance) */}
@@ -66,6 +69,13 @@ export function App() {
           {/* Mobile Sticky Bottom Navigation Bar (md:hidden) */}
           <MobileBottomNav
             selectedBranch={selectedBranch}
+            onOpenCallModal={() => setIsCallModalOpen(true)}
+          />
+
+          {/* Direct Branch Call Modal / Bottom Sheet */}
+          <CallBranchModal
+            isOpen={isCallModalOpen}
+            onClose={() => setIsCallModalOpen(false)}
           />
 
           {/* QR Code & Printable Table Card Modal */}
