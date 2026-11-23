@@ -4,6 +4,8 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { QRCodeModal } from './components/QRCodeModal';
 import { HomePage } from './pages/HomePage';
+import { MenuPage } from './pages/MenuPage';
+import { BranchesPage } from './pages/BranchesPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { LanguageProvider } from './context/LanguageContext';
 import { branchContacts } from './data/menuData';
@@ -33,6 +35,12 @@ export function App() {
             <Routes>
               {/* Home Page (First page customers see) */}
               <Route path="/" element={<HomePage />} />
+
+              {/* Dedicated Menu Page (Complete menu with categories, items, prices, images) */}
+              <Route path="/menu" element={<MenuPage />} />
+
+              {/* Dedicated Branches Page (All 6 branches) */}
+              <Route path="/branches" element={<BranchesPage />} />
 
               {/* Dedicated Category Pages */}
               <Route path="/category/:categoryId" element={<CategoryPage />} />

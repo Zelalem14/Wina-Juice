@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { categories, menuItems } from '../data/menuData';
-import { Sparkles, Utensils, GlassWater, Leaf, ArrowRight, Clock, Award } from 'lucide-react';
-import { BranchContactSection } from '../components/BranchContactSection';
+import { branchContacts } from '../data/menuData';
+import {
+  Sparkles,
+  Utensils,
+  GlassWater,
+  Leaf,
+  ArrowRight,
+  Clock,
+  Award,
+  MapPin
+} from 'lucide-react';
 
 export const HomePage: React.FC = () => {
-
   return (
     <div className="min-h-screen bg-[#fbfbf9] text-stone-800">
       {/* 1. HERO SECTION */}
@@ -60,22 +67,22 @@ export const HomePage: React.FC = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                <a
-                  href="#categories"
+                <Link
+                  to="/menu"
                   className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-base font-bold bg-emerald-500 hover:bg-emerald-400 text-stone-950 transition-all shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <Utensils className="w-5 h-5" />
                   <span>Explore Our Menu</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
 
-                <a
-                  href="#branches-section"
+                <Link
+                  to="/branches"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all"
                 >
                   <Clock className="w-4 h-4 text-emerald-300" />
                   <span>Open 7:00 AM – 10:00 PM</span>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -107,94 +114,65 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. MENU CATEGORIES SECTION */}
-      <section id="categories" className="py-16 sm:py-24 px-4 max-w-7xl mx-auto scroll-mt-20">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
-            <Utensils className="w-3.5 h-3.5" />
-            <span>Explore by Category (የምናሌ ምድቦች)</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-stone-900 font-serif tracking-tight">
-            Select a Category to View Menu
-          </h2>
-
-          <p className="text-stone-600 text-sm sm:text-base mt-3 leading-relaxed">
-            Click on any category card below to open its dedicated menu page. Browse all products, accurate ingredients, and prices derived directly from our official menu.
-          </p>
+      {/* 2. SIMPLIFIED MENU SECTION (Clean, uncluttered, redirects to dedicated Menu page) */}
+      <section id="menu-overview" className="py-20 sm:py-28 px-4 max-w-5xl mx-auto text-center">
+        {/* Section Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs sm:text-sm font-bold mb-4">
+          <Utensils className="w-4 h-4 text-emerald-700" />
+          <span>Our Complete Menu • የእኛ ሙሉ ምናሌ</span>
         </div>
 
-        {/* 11 CATEGORY CARDS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {categories.map((cat) => {
-            // Count items belonging to this category
-            let count = menuItems.filter((i) => i.categoryId === cat.id).length;
-            if (cat.id === 'extra-takeaway') {
-              count = 15; // 11 extra items + 4 takeaway packaging items
-            }
+        {/* Section Heading */}
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-stone-900 font-serif tracking-tight">
+          Handcrafted Juices, Smoothies & Fresh Kitchen
+        </h2>
 
-            // Theme colors
-            let badgeBg = 'bg-red-50 text-red-700 border-red-200';
-            if (cat.themeColor === 'green') {
-              badgeBg = 'bg-emerald-50 text-emerald-800 border-emerald-200';
-            } else if (cat.themeColor === 'teal') {
-              badgeBg = 'bg-cyan-50 text-cyan-800 border-cyan-200';
-            }
+        {/* Short Attractive Description */}
+        <p className="text-stone-600 text-sm sm:text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+          From cold-pressed tropical juices and creamy smoothies to gourmet grilled burgers, stone-baked pizzas, shawarma wraps, and authentic Ethiopian fasting dishes — view our full digital menu with complete ingredients and official prices.
+        </p>
 
-            return (
-              <Link
-                key={cat.id}
-                to={`/category/${cat.id}`}
-                className="group bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5"
-              >
-                <div>
-                  {/* Category Image Container */}
-                  <div className="relative h-48 overflow-hidden bg-stone-100">
-                    <img
-                      src={cat.image}
-                      alt={cat.nameEn}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                    
-                    {/* Item Count Badge */}
-                    <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold bg-black/60 text-white backdrop-blur-md border border-white/20">
-                      {count} items
-                    </span>
+        {/* Category Feature Highlights (Pills) */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-3xl mx-auto mt-8 mb-10 text-xs sm:text-sm">
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🥑 Fresh Juices & Smoothies
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🍔 Gourmet Burgers & Club Sandwiches
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🍕 Stone-Baked Pizza
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🍗 Crispy Fried Chicken
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🌯 Shawarma Wraps
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🍲 Traditional Ethiopian Dishes
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🥗 Vegetarian & Fasting (የፆም)
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full bg-white border border-stone-200 text-stone-700 shadow-2xs font-medium">
+            🍝 Spaghetti & Rice Platters
+          </span>
+        </div>
 
-                    {/* Amharic Title Overlay */}
-                    <div className="absolute bottom-3 left-4 right-4">
-                      <span className="text-xs font-bold text-emerald-300 block drop-shadow">
-                        {cat.nameAm}
-                      </span>
-                      <h3 className="text-xl font-extrabold text-white font-serif tracking-tight drop-shadow">
-                        {cat.nameEn}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-5">
-                    <p className="text-xs text-stone-500 leading-relaxed line-clamp-2">
-                      {cat.description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Footer Action */}
-                <div className="px-5 pb-5 pt-2 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
-                  <span className={`px-2 py-0.5 rounded-md border text-[10px] ${badgeBg}`}>
-                    {cat.nameAm}
-                  </span>
-                  <div className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    <span>View Menu</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+        {/* Functional "Explore Our Menu" Action Button */}
+        <div>
+          <Link
+            to="/menu"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base sm:text-lg font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl hover:shadow-emerald-600/30 transition-all hover:-translate-y-0.5 active:translate-y-0 group"
+          >
+            <Utensils className="w-5 h-5 text-emerald-100 group-hover:rotate-12 transition-transform" />
+            <span>Explore Our Menu</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <div className="text-[12px] text-stone-400 font-medium mt-3">
+            106+ items • Exact physical menu pricing & ingredients
+          </div>
         </div>
       </section>
 
@@ -244,8 +222,52 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. BRANCH LOCATIONS DIRECTORY */}
-      <BranchContactSection />
+      {/* 4. BOTTOM BRANCHES BAR (Compact with Branch Icons & Functional "View All 6 Branches" Link) */}
+      <section id="branches-section" className="py-12 px-4 bg-stone-100/80 border-t border-stone-200 scroll-mt-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-2">
+                <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Addis Ababa Locations</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-stone-900 font-serif">
+                6 Locations Across Addis Ababa
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-500 mt-1">
+                Open daily 7:00 AM – 10:00 PM for dine-in and fast takeaway orders
+              </p>
+
+              {/* Small Branch Icons Row */}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-2.5 mt-4">
+                {branchContacts.map((b) => (
+                  <div
+                    key={b.id}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-50 border border-stone-200/80 text-xs text-stone-700 font-medium"
+                    title={`${b.nameEn} Branch (${b.nameAm})`}
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>{b.nameEn}</span>
+                    <span className="text-stone-400 text-[11px]">({b.nameAm})</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* View All 6 Branches Button */}
+            <div className="shrink-0">
+              <Link
+                to="/branches"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-bold bg-emerald-700 hover:bg-emerald-800 text-white shadow-md hover:shadow-emerald-700/25 transition-all hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <MapPin className="w-4 h-4" />
+                <span>View All 6 Branches</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

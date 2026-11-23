@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, ShieldCheck, Clock, MapPin, QrCode } from 'lucide-react';
 
 interface FooterProps {
@@ -68,13 +69,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
               </p>
             </div>
             <div className="flex items-center gap-2 flex-wrap">
-              <a
-                href="#branches-section"
+              <Link
+                to="/branches"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 transition-all shadow-sm"
               >
                 <MapPin className="w-3.5 h-3.5" />
                 <span>View All 6 Branches</span>
-              </a>
+              </Link>
               {onOpenQRCode && (
                 <button
                   onClick={onOpenQRCode}

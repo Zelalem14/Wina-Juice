@@ -63,9 +63,9 @@ export const CategoryPage: React.FC = () => {
               <span>Home</span>
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-300" />
-            <a href="/#categories" className="hover:text-emerald-700 transition-colors">
-              Categories
-            </a>
+            <Link to="/menu" className="hover:text-emerald-700 transition-colors">
+              Menu
+            </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-300" />
             <span className="font-bold text-stone-900 truncate max-w-[150px] sm:max-w-none">
               {currentCategory.nameEn}
@@ -75,7 +75,7 @@ export const CategoryPage: React.FC = () => {
           {/* Controls: Back Button */}
           <div className="flex items-center gap-2 sm:gap-3">
             <button
-              onClick={() => navigate('/#categories')}
+              onClick={() => navigate('/menu')}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
@@ -266,10 +266,10 @@ export const CategoryPage: React.FC = () => {
               Browse Other Categories
             </h3>
             <Link
-              to="/#categories"
+              to="/menu"
               className="text-xs font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1"
             >
-              <span>View All Categories</span>
+              <span>View All Menu</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>

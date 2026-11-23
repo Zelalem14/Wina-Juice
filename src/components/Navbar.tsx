@@ -86,18 +86,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               Home
             </Link>
-            <a
-              href="/#categories"
-              className="hover:text-emerald-700 transition-colors"
+            <Link
+              to="/menu"
+              className={`hover:text-emerald-700 transition-colors ${
+                location.pathname === '/menu' ? 'text-emerald-700 font-bold' : ''
+              }`}
             >
-              Menu Categories
-            </a>
-            <a
-              href="#branches-section"
-              className="hover:text-emerald-700 transition-colors"
+              Menu
+            </Link>
+            <Link
+              to="/branches"
+              className={`hover:text-emerald-700 transition-colors ${
+                location.pathname === '/branches' ? 'text-emerald-700 font-bold' : ''
+              }`}
             >
               Branches
-            </a>
+            </Link>
           </nav>
 
           {/* Right Action Items */}
