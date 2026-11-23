@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -15,6 +15,15 @@ import { ArrowUp } from 'lucide-react';
 export function App() {
   const [selectedBranch, setSelectedBranch] = useState(branchContacts[0].id);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -65,15 +74,17 @@ export function App() {
             onClose={() => setIsQRModalOpen(false)}
           />
 
-          {/* Back to Top Floating Button (positioned above mobile nav on phones) */}
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 p-2.5 sm:p-3 rounded-full bg-emerald-700 text-white shadow-xl hover:bg-emerald-800 transition-all hover:-translate-y-1 z-30"
-            title="Back to Top"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </button>
+          {/* Back to Top Floating Button (Visible only after scrolling down) */}
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 p-2.5 sm:p-3 rounded-full bg-emerald-700 text-white shadow-xl hover:bg-emerald-800 transition-all hover:-translate-y-1 z-30"
+              title="Back to Top"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </BrowserRouter>
     </LanguageProvider>
