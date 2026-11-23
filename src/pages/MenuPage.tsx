@@ -92,36 +92,36 @@ export const MenuPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#fbfbf9] text-stone-800 pb-20">
       {/* 1. TOP HEADER BANNER */}
-      <section className="bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-white py-12 px-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+      <section className="bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-white py-8 sm:py-12 px-3 sm:px-4 relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-72 sm:w-80 h-72 sm:h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-800/80 border border-emerald-500/40 text-emerald-200 text-xs font-semibold mb-4 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-800/80 border border-emerald-500/40 text-emerald-200 text-[11px] sm:text-xs font-semibold mb-3 sm:mb-4 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
             <span>Official Digital Menu • 100% Verified Prices</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-serif tracking-tight text-white mb-3">
-            Wina Juice Menu <span className="text-red-400">|</span> <span className="text-emerald-300 font-sans">የዊና ጁስ ምናሌ</span>
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-serif tracking-tight text-white mb-2 sm:mb-3">
+            Wina Juice Menu <span className="text-red-400">|</span> <span className="text-emerald-300 font-sans text-xl sm:text-3xl">የዊና ጁስ ምናሌ</span>
           </h1>
 
-          <p className="text-emerald-100/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-6">
+          <p className="text-emerald-100/90 text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed mb-5 sm:mb-6 px-2">
             Explore our complete selection of freshly pressed tropical juices, fruit smoothies, stone-baked pizzas, gourmet burgers, traditional fasting dishes, and takeaway packages.
           </p>
 
           {/* Quick Search Input */}
-          <div className="max-w-md mx-auto relative">
-            <Search className="w-5 h-5 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="max-w-md mx-auto relative px-1">
+            <Search className="w-4 h-4 sm:w-5 sm:h-5 text-stone-400 absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search food, juices, burgers, pizza... / ምግቦችን ይፈልጉ"
-              className="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-white text-stone-900 placeholder:text-stone-400 text-sm shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 border border-white/20"
+              placeholder="Search food, juices, burgers... / ምግቦችን ይፈልጉ"
+              className="w-full pl-10 sm:pl-12 pr-10 py-2.5 sm:py-3.5 rounded-xl sm:rounded-2xl bg-white text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm shadow-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 border border-white/20"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 rounded-full"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 rounded-full"
                 aria-label="Clear search"
               >
                 <X className="w-4 h-4" />
@@ -132,19 +132,19 @@ export const MenuPage: React.FC = () => {
       </section>
 
       {/* 2. CATEGORY TABS BAR */}
-      <div className="sticky top-[80px] sm:top-[88px] z-30 bg-[#fbfbf9]/95 backdrop-blur-md border-b border-stone-200 py-3 px-4 shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth">
+      <div className="sticky top-[54px] sm:top-[68px] z-30 bg-[#fbfbf9]/95 backdrop-blur-md border-b border-stone-200 py-2 sm:py-3 px-3 sm:px-4 shadow-xs">
+        <div className="max-w-7xl mx-auto flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar scroll-smooth py-0.5">
           {/* All Categories Button */}
           <button
             onClick={() => handleSelectCategory(null)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shrink-0 transition-all ${
+            className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold shrink-0 transition-all ${
               selectedCategory === null
                 ? 'bg-emerald-700 text-white shadow-md'
                 : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
             }`}
           >
-            <Layers className="w-4 h-4" />
-            <span>All Items ({menuItems.length + extraItems.length + takeAwayItems.length})</span>
+            <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>All ({menuItems.length + extraItems.length + takeAwayItems.length})</span>
           </button>
 
           {/* Category Buttons */}
@@ -159,7 +159,7 @@ export const MenuPage: React.FC = () => {
               <button
                 key={cat.id}
                 onClick={() => handleSelectCategory(cat.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shrink-0 transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold shrink-0 transition-all ${
                   isActive
                     ? 'bg-emerald-700 text-white shadow-md'
                     : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
@@ -167,7 +167,7 @@ export const MenuPage: React.FC = () => {
               >
                 {getCategoryIcon(cat.iconName)}
                 <span>{cat.nameEn}</span>
-                <span className={`text-[11px] px-1.5 py-0.5 rounded-full ${
+                <span className={`text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-full ${
                   isActive ? 'bg-emerald-800 text-emerald-100' : 'bg-stone-100 text-stone-500'
                 }`}>
                   {count}

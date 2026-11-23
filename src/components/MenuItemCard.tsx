@@ -27,11 +27,11 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) =>
 
   return (
     <div
-      className={`bg-white rounded-3xl p-5 sm:p-6 border-2 ${cardBorderClass} shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group`}
+      className={`bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-2 ${cardBorderClass} shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between group`}
     >
       <div>
         {/* Top Header: Title, Special Badge, Price */}
-        <div className="flex items-start justify-between gap-3 mb-2">
+        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2">
           <div className="flex-1 min-w-0">
             {/* Naturally displayed Amharic & English names */}
             <div className="flex items-center gap-1.5 flex-wrap">
@@ -45,18 +45,18 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) =>
                 </span>
               )}
             </div>
-            <h3 className="text-base sm:text-lg font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight mt-0.5">
+            <h3 className="text-sm sm:text-base lg:text-lg font-extrabold text-stone-900 group-hover:text-emerald-700 transition-colors tracking-tight mt-0.5">
               {item.nameEn}
             </h3>
           </div>
 
           {/* Price Badge in ETB */}
           <div className="shrink-0 text-right">
-            <div className={`px-3 py-1.5 rounded-2xl font-mono font-extrabold text-base sm:text-lg ${priceBgClass} border shadow-sm`}>
-              {item.price} <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-stone-500">ETB</span>
+            <div className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl sm:rounded-2xl font-mono font-extrabold text-sm sm:text-base lg:text-lg ${priceBgClass} border shadow-2xs`}>
+              {item.price} <span className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-wider text-stone-500">ETB</span>
             </div>
             {item.priceNote && (
-              <span className="text-[10px] text-amber-600 block mt-1 font-medium max-w-[120px] leading-tight" title={item.priceNote}>
+              <span className="text-[9px] sm:text-[10px] text-amber-600 block mt-1 font-medium max-w-[100px] sm:max-w-[120px] leading-tight" title={item.priceNote}>
                 *{item.priceNote}
               </span>
             )}
@@ -64,10 +64,10 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({ item, category }) =>
         </div>
 
         {/* Dot Leader Visual Divider */}
-        <div className="w-full border-b border-dashed border-stone-200 my-2.5" />
+        <div className="w-full border-b border-dashed border-stone-200 my-2 sm:my-2.5" />
 
         {/* Naturally displayed English & Amharic descriptions */}
-        <div className="space-y-1.5 text-xs sm:text-[13px] leading-relaxed mb-4">
+        <div className="space-y-1 sm:space-y-1.5 text-xs sm:text-[13px] leading-relaxed mb-3 sm:mb-4">
           {item.descriptionEn && (
             <p className="text-stone-600 font-normal">
               {item.descriptionEn}

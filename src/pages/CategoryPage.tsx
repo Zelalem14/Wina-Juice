@@ -55,8 +55,8 @@ export const CategoryPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#fbfbf9] text-stone-800 pb-16">
       {/* 1. TOP BREADCRUMB & CONTROLS BAR */}
-      <div className="bg-white border-b border-stone-200 sticky top-[80px] sm:top-[88px] z-30 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-white border-b border-stone-200 sticky top-[54px] sm:top-[68px] z-30 shadow-2xs">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
           {/* Breadcrumbs Navigation */}
           <div className="flex items-center gap-1.5 text-xs text-stone-500 font-medium">
             <Link to="/" className="hover:text-emerald-700 transition-colors flex items-center gap-1">
@@ -86,7 +86,7 @@ export const CategoryPage: React.FC = () => {
       </div>
 
       {/* 2. CATEGORY HERO BANNER */}
-      <div className="relative h-64 sm:h-80 overflow-hidden bg-stone-900 text-white">
+      <div className="relative h-52 sm:h-72 overflow-hidden bg-stone-900 text-white">
         <img
           src={currentCategory.image}
           alt={currentCategory.nameEn}
@@ -94,9 +94,9 @@ export const CategoryPage: React.FC = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
 
-        <div className="absolute inset-0 max-w-7xl mx-auto px-4 flex flex-col justify-end pb-8">
+        <div className="absolute inset-0 max-w-7xl mx-auto px-4 flex flex-col justify-end pb-6 sm:pb-8">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-600/80 backdrop-blur-sm text-white text-xs font-bold mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600/80 backdrop-blur-sm text-white text-[11px] sm:text-xs font-bold mb-2">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
               <span>
                 {isExtraTakeaway
@@ -105,9 +105,9 @@ export const CategoryPage: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-white tracking-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-serif text-white tracking-tight">
               {currentCategory.nameEn}
-              <span className="text-emerald-400 font-sans font-bold text-2xl sm:text-3xl ml-3">
+              <span className="text-emerald-400 font-sans font-bold text-xl sm:text-3xl ml-2 sm:ml-3">
                 / {currentCategory.nameAm}
               </span>
             </h1>

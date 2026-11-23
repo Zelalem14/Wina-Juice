@@ -8,13 +8,13 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
   return (
-    <footer className="bg-stone-900 text-stone-300 pt-12 pb-8 px-4 border-t border-stone-800">
+    <footer className="bg-stone-900 text-stone-300 pt-10 sm:pt-12 pb-6 sm:pb-8 px-4 border-t border-stone-800">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
           {/* Brand Info */}
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-sm border border-stone-700 bg-white">
+              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-sm border border-stone-700 bg-white shrink-0">
                 <img
                   src="/wina-logo.png"
                   alt="Wina Juice Official Logo"
@@ -22,10 +22,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
                 />
               </div>
               <div>
-                <span className="text-2xl font-extrabold text-white font-serif tracking-tight">
+                <span className="text-xl sm:text-2xl font-extrabold text-white font-serif tracking-tight">
                   Wina Juice
                 </span>
-                <span className="text-lg font-bold text-red-500 ml-2">
+                <span className="text-base sm:text-lg font-bold text-red-500 ml-2">
                   ዊና ጁስ
                 </span>
               </div>

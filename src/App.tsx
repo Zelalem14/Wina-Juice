@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { QRCodeModal } from './components/QRCodeModal';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { HomePage } from './pages/HomePage';
 import { MenuPage } from './pages/MenuPage';
 import { BranchesPage } from './pages/BranchesPage';
@@ -30,8 +31,8 @@ export function App() {
             setSelectedBranch={setSelectedBranch}
           />
 
-          {/* Page Routing */}
-          <main className="flex-1">
+          {/* Page Routing (pb-16 on mobile for bottom navigation bar clearance) */}
+          <main className="flex-1 pb-16 md:pb-0">
             <Routes>
               {/* Home Page (First page customers see) */}
               <Route path="/" element={<HomePage />} />
@@ -53,16 +54,22 @@ export function App() {
           {/* Footer */}
           <Footer onOpenQRCode={() => setIsQRModalOpen(true)} />
 
+          {/* Mobile Sticky Bottom Navigation Bar (md:hidden) */}
+          <MobileBottomNav
+            onOpenQRCode={() => setIsQRModalOpen(true)}
+            selectedBranch={selectedBranch}
+          />
+
           {/* QR Code & Printable Table Card Modal */}
           <QRCodeModal
             isOpen={isQRModalOpen}
             onClose={() => setIsQRModalOpen(false)}
           />
 
-          {/* Back to Top Floating Button */}
+          {/* Back to Top Floating Button (positioned above mobile nav on phones) */}
           <button
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 p-3 rounded-full bg-emerald-700 text-white shadow-xl hover:bg-emerald-800 transition-all hover:-translate-y-1 z-30"
+            className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 p-2.5 sm:p-3 rounded-full bg-emerald-700 text-white shadow-xl hover:bg-emerald-800 transition-all hover:-translate-y-1 z-30"
             title="Back to Top"
             aria-label="Back to top"
           >

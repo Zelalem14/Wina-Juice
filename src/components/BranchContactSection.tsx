@@ -4,26 +4,26 @@ import { Phone, MapPin, Clock, CheckCircle2 } from 'lucide-react';
 
 export const BranchContactSection: React.FC = () => {
   return (
-    <section id="branches-section" className="py-12 px-4 bg-stone-100/70 border-t border-b border-stone-200">
+    <section id="branches-section" className="py-8 sm:py-12 px-3 sm:px-4 bg-stone-100/70 border-t border-b border-stone-200 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-2 sm:mb-3">
             <MapPin className="w-3.5 h-3.5" />
             <span>Addis Ababa Locations</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif">
+          <h2 className="text-xl sm:text-3xl font-extrabold text-stone-900 font-serif">
             Visit or Order from Our 6 Branches
           </h2>
-          <p className="text-stone-600 text-sm mt-2">
+          <p className="text-stone-600 text-xs sm:text-sm mt-1.5 sm:mt-2">
             Call your nearest Wina Juice branch directly for take-away preparation or inquiries. All phone numbers correspond directly to our official menu.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
           {branchContacts.map((branch) => (
             <div
               key={branch.id}
-              className="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all flex flex-col justify-between"
+              className="bg-white rounded-2xl p-4 sm:p-5 border border-stone-200 shadow-2xs hover:shadow-md hover:border-emerald-500 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-2">
