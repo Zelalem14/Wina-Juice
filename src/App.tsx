@@ -56,7 +56,6 @@ export function App() {
 
           {/* Mobile Sticky Bottom Navigation Bar (md:hidden) */}
           <MobileBottomNav
-            onOpenQRCode={() => setIsQRModalOpen(true)}
             selectedBranch={selectedBranch}
           />
 

@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Utensils, MapPin, QrCode, Phone } from 'lucide-react';
+import { Home, Utensils, MapPin, Phone } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
 
 interface MobileBottomNavProps {
-  onOpenQRCode: () => void;
   selectedBranch: string;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
-  onOpenQRCode,
   selectedBranch,
 }) => {
   const location = useLocation();
@@ -59,17 +57,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <span className="text-[10px] mt-0.5">Branches</span>
       </Link>
 
-      {/* 4. Table QR */}
-      <button
-        onClick={onOpenQRCode}
-        className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-stone-500 hover:text-stone-800 transition-all"
-        title="View Table Stand QR Code"
-      >
-        <QrCode className="w-5 h-5 text-emerald-600" />
-        <span className="text-[10px] mt-0.5">Table QR</span>
-      </button>
-
-      {/* 5. Direct Call */}
+      {/* 4. Direct Call */}
       <a
         href={currentBranch.telUri}
         className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-red-700 hover:text-red-800 transition-all font-semibold"

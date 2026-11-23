@@ -126,16 +126,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Action Items */}
           <div className="flex items-center gap-1.5 sm:gap-3">
-            {/* Table QR Button */}
-            <button
-              onClick={onOpenQRCode}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 transition-all shadow-2xs"
-              title="View & Download Table QR Code"
-            >
-              <QrCode className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
-              <span className="hidden sm:inline">Table QR</span>
-            </button>
-
             {/* Branch Phone Quick Call Dropdown */}
             <div className="relative">
               <button
