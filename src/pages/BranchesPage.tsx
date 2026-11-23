@@ -41,7 +41,7 @@ export const BranchesPage: React.FC = () => {
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500 text-stone-950 font-bold hover:bg-emerald-400 transition-colors text-[11px] sm:text-xs"
             >
               <Utensils className="w-3.5 h-3.5" />
-              <span>Browse Menu First</span>
+              <span>Browse Menu First (ሜኑ ይመልከቱ)</span>
             </Link>
           </div>
         </div>

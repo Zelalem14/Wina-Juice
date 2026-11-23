@@ -64,7 +64,7 @@ export const CategoryPage: React.FC = () => {
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-300" />
             <Link to="/menu" className="hover:text-emerald-700 transition-colors">
-              Menu
+              Menu (ሜኑ)
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-300" />
             <span className="font-bold text-stone-900 truncate max-w-[150px] sm:max-w-none">
@@ -79,7 +79,7 @@ export const CategoryPage: React.FC = () => {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-stone-100 hover:bg-stone-200 text-stone-700 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Menu</span>
+              <span>Back to Menu (ወደ ሜኑ ተመለስ)</span>
             </button>
           </div>
         </div>
@@ -269,7 +269,7 @@ export const CategoryPage: React.FC = () => {
               to="/menu"
               className="text-xs font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1"
             >
-              <span>View All Menu</span>
+              <span>View All Menu (ሙሉ ሜኑ)</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>

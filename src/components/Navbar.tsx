@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 location.pathname === '/menu' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
               }`}
             >
-              Menu
+              Menu (ሜኑ)
             </Link>
             <Link
               to="/branches"
@@ -217,7 +217,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Utensils className="w-4 h-4 mb-1" />
-              <span>Menu</span>
+              <span>Menu (ሜኑ)</span>
             </Link>
 
             <Link

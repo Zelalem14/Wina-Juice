@@ -101,7 +101,7 @@ export const MenuPage: React.FC = () => {
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-serif tracking-tight text-white mb-2 sm:mb-3">
-            Wina Juice Menu <span className="text-red-400">|</span> <span className="text-emerald-300 font-sans text-xl sm:text-3xl">የዊና ጁስ ምናሌ</span>
+            Wina Juice Menu <span className="text-red-400">|</span> <span className="text-emerald-300 font-sans text-xl sm:text-3xl">የዊና ጁስ ሜኑ</span>
           </h1>
 
           <p className="text-emerald-100/90 text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed mb-5 sm:mb-6 px-2">

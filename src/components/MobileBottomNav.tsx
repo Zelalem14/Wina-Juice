@@ -43,7 +43,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         }`}
       >
         <Utensils className={`w-5 h-5 ${location.pathname === '/menu' ? 'stroke-[2.5]' : ''}`} />
-        <span className="text-[10px] mt-0.5">Menu</span>
+        <span className="text-[10px] mt-0.5">Menu (ሜኑ)</span>
       </Link>
 
       {/* 3. Branches */}
