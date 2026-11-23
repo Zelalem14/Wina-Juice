@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { branchContacts } from '../data/menuData';
 import {
   Sparkles,
   Utensils,
   ArrowRight,
-  Clock,
-  MapPin
+  Clock
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
@@ -61,14 +59,14 @@ export const HomePage: React.FC = () => {
           </p>
 
           {/* Key Trust Highlights (Compact Stat Row) */}
-          <div className="grid grid-cols-3 gap-2.5 sm:gap-4 w-full max-w-md mx-auto mb-6 text-xs">
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-4 w-full max-w-md mx-auto mb-8 text-xs">
             <div className="p-2.5 sm:p-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 text-center">
               <div className="font-extrabold text-sm sm:text-base text-yellow-300">106+</div>
               <div className="text-emerald-200 text-[10px] sm:text-[11px] font-medium">Menu Items (ሜኑ)</div>
             </div>
             <div className="p-2.5 sm:p-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 text-center">
-              <div className="font-extrabold text-sm sm:text-base text-emerald-300">6</div>
-              <div className="text-emerald-200 text-[10px] sm:text-[11px] font-medium">Addis Branches</div>
+              <div className="font-extrabold text-sm sm:text-base text-emerald-300">100%</div>
+              <div className="text-emerald-200 text-[10px] sm:text-[11px] font-medium">Natural Fresh</div>
             </div>
             <div className="p-2.5 sm:p-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 text-center">
               <div className="font-extrabold text-sm sm:text-base text-amber-300">Daily</div>
@@ -76,41 +74,21 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Small Branch Location Pills (Subtle badges without addresses or lists) */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-8 max-w-2xl mx-auto px-2">
-            <span className="text-[11px] sm:text-xs text-emerald-300 font-semibold flex items-center gap-1 mr-1">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Branches:</span>
-            </span>
-            {branchContacts.map((b) => (
-              <span
-                key={b.id}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] text-emerald-100 font-medium"
-              >
-                <span>{b.nameEn}</span>
-                <span className="text-emerald-300 text-[9px] sm:text-[10px]">({b.nameAm})</span>
-              </span>
-            ))}
-          </div>
-
-          {/* CTA Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto">
+          {/* Primary CTA Action Button */}
+          <div className="w-full max-w-sm mx-auto flex flex-col items-center">
             <Link
               to="/menu"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-base sm:text-lg font-bold bg-emerald-500 hover:bg-emerald-400 text-stone-950 transition-all shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl text-base sm:text-lg font-bold bg-emerald-500 hover:bg-emerald-400 text-stone-950 transition-all shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:translate-y-0 w-full"
             >
               <Utensils className="w-5 h-5 text-stone-950" />
               <span>Explore Our Menu (ሜኑ ይመልከቱ)</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
 
-            <Link
-              to="/branches"
-              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl text-xs sm:text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all w-full sm:w-auto"
-            >
-              <Clock className="w-4 h-4 text-emerald-300" />
-              <span>Open 7:00 AM – 10:00 PM</span>
-            </Link>
+            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-emerald-200/90 mt-4 font-medium">
+              <Clock className="w-3.5 h-3.5 text-emerald-300" />
+              <span>Open Daily: 7:00 AM – 10:00 PM</span>
+            </div>
           </div>
         </div>
       </section>

@@ -52,7 +52,7 @@ export function App() {
           </main>
 
           {/* Footer */}
-          <Footer onOpenQRCode={() => setIsQRModalOpen(true)} />
+          <Footer />
 
           {/* Mobile Sticky Bottom Navigation Bar (md:hidden) */}
           <MobileBottomNav

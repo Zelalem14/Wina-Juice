@@ -1,12 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShieldCheck, Clock, MapPin, QrCode } from 'lucide-react';
+import { Heart, ShieldCheck, Clock, MapPin } from 'lucide-react';
 
-interface FooterProps {
-  onOpenQRCode?: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
+export const Footer: React.FC = () => {
   return (
     <footer className="bg-stone-900 text-stone-300 pt-10 sm:pt-12 pb-6 sm:pb-8 px-4 border-t border-stone-800">
       <div className="max-w-7xl mx-auto">
@@ -68,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
                 Fresh juices, smoothies, dine-in & takeaway prepared daily across all 6 branches.
               </p>
             </div>
-            <div className="flex items-center gap-2 flex-wrap">
+            <div>
               <Link
                 to="/branches"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-600 transition-all shadow-sm"
@@ -76,15 +72,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQRCode }) => {
                 <MapPin className="w-3.5 h-3.5" />
                 <span>View All 6 Branches</span>
               </Link>
-              {onOpenQRCode && (
-                <button
-                  onClick={onOpenQRCode}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-stone-800 text-stone-200 border border-stone-700 hover:bg-stone-700 hover:text-white transition-all shadow-sm"
-                >
-                  <QrCode className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Table QR Code</span>
-                </button>
-              )}
             </div>
           </div>
         </div>
