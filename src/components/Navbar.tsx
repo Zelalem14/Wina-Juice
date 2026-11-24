@@ -243,7 +243,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           ref={menuRef}
-          className="absolute right-0 top-full w-[50vw] min-w-[210px] max-w-sm bg-white border-l border-b border-stone-200 rounded-bl-2xl shadow-xl px-2.5 sm:px-3 py-2 sm:py-2.5 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+          className="absolute right-0 top-full w-[50vw] min-w-[210px] max-w-sm bg-transparent border-0 shadow-none px-2.5 sm:px-3 py-2 sm:py-2.5 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50"
         >
           {/* Header Title */}
           <div className="flex items-center justify-between text-[10px] font-bold text-stone-400 uppercase tracking-wider px-1 mb-1">
@@ -255,17 +255,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className="flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-50/60 transition-all group"
+            className="flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-500/10 transition-all group"
           >
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                <Info className="w-3.5 h-3.5 text-emerald-700" />
+              <div className="w-7 h-7 flex items-center justify-center shrink-0 text-emerald-700 bg-transparent group-hover:scale-105 transition-transform">
+                <Info className="w-4 h-4 text-emerald-700" />
               </div>
               <div className="min-w-0">
                 <div className="font-bold text-stone-900 text-xs group-hover:text-emerald-700 transition-colors leading-tight">
                   About Wina Juice <span className="text-[10px] sm:text-[11px] text-emerald-700 font-sans font-bold ml-0.5">(ስለ እኛ)</span>
                 </div>
-                <p className="text-[10px] text-stone-500 leading-tight mt-0.5 line-clamp-2">
+                <p className="text-[10px] text-stone-600 leading-tight mt-0.5 line-clamp-2">
                   Our restaurant story, 100% natural ingredients, hours & commitment
                 </p>
               </div>
@@ -279,18 +279,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               closeMobileMenu();
               onOpenQRCode();
             }}
-            className="w-full flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-50/60 transition-all text-left group"
+            className="w-full flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-500/10 transition-all text-left group"
             title="View & Download Digital Menu QR Code"
           >
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                <QrCode className="w-3.5 h-3.5 text-emerald-700" />
+              <div className="w-7 h-7 flex items-center justify-center shrink-0 text-emerald-700 bg-transparent group-hover:scale-105 transition-transform">
+                <QrCode className="w-4 h-4 text-emerald-700" />
               </div>
               <div className="min-w-0">
                 <div className="font-bold text-stone-900 text-xs group-hover:text-emerald-700 transition-colors leading-tight">
                   Digital Menu QR Code <span className="text-[10px] sm:text-[11px] text-emerald-700 font-sans font-bold ml-0.5">(QR ኮድ)</span>
                 </div>
-                <p className="text-[10px] text-stone-500 leading-tight mt-0.5 line-clamp-2">
+                <p className="text-[10px] text-stone-600 leading-tight mt-0.5 line-clamp-2">
                   View & download scannable digital menu QR code
                 </p>
               </div>
