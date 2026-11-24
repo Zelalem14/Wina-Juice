@@ -28,6 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [showBranchDropdown, setShowBranchDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
   const currentBranch = branchContacts.find((b) => b.id === selectedBranch) || branchContacts[0];
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -225,14 +226,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               ref={buttonRef}
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="p-2 rounded-xl text-stone-700 hover:text-emerald-800 hover:bg-emerald-50/60 transition-colors bg-transparent border-0 outline-none shadow-none"
+              className="p-2 rounded-xl text-stone-900 hover:text-emerald-700 transition-colors bg-transparent border-0 outline-none shadow-none focus:outline-none focus:ring-0 active:bg-transparent"
               aria-label="Toggle navigation menu"
               title="Navigation Menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5 text-stone-800" />
+                <X className="w-5 h-5 stroke-[2.75] text-stone-900 drop-shadow-xs" />
               ) : (
-                <Menu className="w-5 h-5 text-stone-800" />
+                <Menu className="w-5 h-5 stroke-[2.75] text-stone-900 drop-shadow-xs" />
               )}
             </button>
           </div>
@@ -243,34 +244,75 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           ref={menuRef}
-          className="absolute right-0 top-full w-[50vw] min-w-[210px] max-w-sm bg-transparent border-0 shadow-none px-2.5 sm:px-3 py-2 sm:py-2.5 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+          className={`absolute right-2 sm:right-4 top-full w-[54vw] min-w-[220px] max-w-sm rounded-2xl p-2.5 sm:p-3 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200 z-50 ${
+            isHomePage
+              ? 'bg-emerald-950/85 backdrop-blur-xl border border-emerald-400/25 shadow-[0_8px_30px_rgb(0,0,0,0.5)]'
+              : 'bg-white/95 backdrop-blur-xl border border-stone-200 shadow-xl'
+          }`}
         >
           {/* Header Title */}
-          <div className="flex items-center justify-between text-[10px] font-bold text-stone-400 uppercase tracking-wider px-1 mb-1">
-            <span className="truncate">Menu Options • አማራጮች</span>
-            <span className="text-[10px] font-normal text-stone-400 shrink-0 ml-1">Wina Juice</span>
+          <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider px-1 mb-1">
+            <span className={`truncate ${isHomePage ? 'text-emerald-300 drop-shadow-xs' : 'text-stone-400'}`}>
+              Menu Options • አማራጮች
+            </span>
+            <span className={`text-[10px] font-normal shrink-0 ml-1 ${isHomePage ? 'text-emerald-200/80' : 'text-stone-400'}`}>
+              Wina Juice
+            </span>
           </div>
 
           {/* 1. About Section */}
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className="flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-500/10 transition-all group"
+            className={`flex items-center justify-between p-2 rounded-xl bg-transparent border-0 transition-all group ${
+              isHomePage
+                ? 'hover:bg-white/10 active:bg-white/15'
+                : 'hover:bg-emerald-500/10 active:bg-emerald-500/15'
+            }`}
           >
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 flex items-center justify-center shrink-0 text-emerald-700 bg-transparent group-hover:scale-105 transition-transform">
-                <Info className="w-4 h-4 text-emerald-700" />
+              <div
+                className={`w-7 h-7 flex items-center justify-center shrink-0 bg-transparent group-hover:scale-110 transition-transform ${
+                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]' : 'text-emerald-700'
+                }`}
+              >
+                <Info className="w-4 h-4 stroke-[2.5]" />
               </div>
               <div className="min-w-0">
-                <div className="font-bold text-stone-900 text-xs group-hover:text-emerald-700 transition-colors leading-tight">
-                  About Wina Juice <span className="text-[10px] sm:text-[11px] text-emerald-700 font-sans font-bold ml-0.5">(ስለ እኛ)</span>
+                <div
+                  className={`font-extrabold text-xs leading-tight transition-colors ${
+                    isHomePage
+                      ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] group-hover:text-emerald-200'
+                      : 'text-stone-900 group-hover:text-emerald-700'
+                  }`}
+                >
+                  About Wina Juice{' '}
+                  <span
+                    className={`text-[10px] sm:text-[11px] font-sans font-bold ml-0.5 ${
+                      isHomePage ? 'text-emerald-300' : 'text-emerald-700'
+                    }`}
+                  >
+                    (ስለ እኛ)
+                  </span>
                 </div>
-                <p className="text-[10px] text-stone-600 leading-tight mt-0.5 line-clamp-2">
+                <p
+                  className={`text-[10px] leading-tight mt-0.5 line-clamp-2 ${
+                    isHomePage
+                      ? 'text-emerald-100 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)]'
+                      : 'text-stone-600 font-medium'
+                  }`}
+                >
                   Our restaurant story, 100% natural ingredients, hours & commitment
                 </p>
               </div>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+            <ChevronRight
+              className={`w-3.5 h-3.5 transition-all shrink-0 ml-1 ${
+                isHomePage
+                  ? 'text-emerald-200 group-hover:text-white group-hover:translate-x-0.5'
+                  : 'text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5'
+              }`}
+            />
           </Link>
 
           {/* 2. QR Code Section */}
@@ -279,23 +321,56 @@ export const Navbar: React.FC<NavbarProps> = ({
               closeMobileMenu();
               onOpenQRCode();
             }}
-            className="w-full flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-500/10 transition-all text-left group"
+            className={`w-full flex items-center justify-between p-2 rounded-xl bg-transparent border-0 transition-all text-left group ${
+              isHomePage
+                ? 'hover:bg-white/10 active:bg-white/15'
+                : 'hover:bg-emerald-500/10 active:bg-emerald-500/15'
+            }`}
             title="View & Download Digital Menu QR Code"
           >
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 flex items-center justify-center shrink-0 text-emerald-700 bg-transparent group-hover:scale-105 transition-transform">
-                <QrCode className="w-4 h-4 text-emerald-700" />
+              <div
+                className={`w-7 h-7 flex items-center justify-center shrink-0 bg-transparent group-hover:scale-110 transition-transform ${
+                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]' : 'text-emerald-700'
+                }`}
+              >
+                <QrCode className="w-4 h-4 stroke-[2.5]" />
               </div>
               <div className="min-w-0">
-                <div className="font-bold text-stone-900 text-xs group-hover:text-emerald-700 transition-colors leading-tight">
-                  Digital Menu QR Code <span className="text-[10px] sm:text-[11px] text-emerald-700 font-sans font-bold ml-0.5">(QR ኮድ)</span>
+                <div
+                  className={`font-extrabold text-xs leading-tight transition-colors ${
+                    isHomePage
+                      ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] group-hover:text-emerald-200'
+                      : 'text-stone-900 group-hover:text-emerald-700'
+                  }`}
+                >
+                  Digital Menu QR Code{' '}
+                  <span
+                    className={`text-[10px] sm:text-[11px] font-sans font-bold ml-0.5 ${
+                      isHomePage ? 'text-emerald-300' : 'text-emerald-700'
+                    }`}
+                  >
+                    (QR ኮድ)
+                  </span>
                 </div>
-                <p className="text-[10px] text-stone-600 leading-tight mt-0.5 line-clamp-2">
+                <p
+                  className={`text-[10px] leading-tight mt-0.5 line-clamp-2 ${
+                    isHomePage
+                      ? 'text-emerald-100 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)]'
+                      : 'text-stone-600 font-medium'
+                  }`}
+                >
                   View & download scannable digital menu QR code
                 </p>
               </div>
             </div>
-            <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+            <ChevronRight
+              className={`w-3.5 h-3.5 transition-all shrink-0 ml-1 ${
+                isHomePage
+                  ? 'text-emerald-200 group-hover:text-white group-hover:translate-x-0.5'
+                  : 'text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5'
+              }`}
+            />
           </button>
         </div>
       )}
