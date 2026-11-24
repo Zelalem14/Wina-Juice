@@ -225,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               ref={buttonRef}
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="p-2 rounded-xl text-stone-700 hover:text-emerald-800 hover:bg-stone-100 transition-colors"
+              className="p-2 rounded-xl text-stone-700 hover:text-emerald-800 hover:bg-emerald-50/60 transition-colors bg-transparent border-0 outline-none shadow-none"
               aria-label="Toggle navigation menu"
               title="Navigation Menu"
             >
@@ -255,7 +255,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className="flex items-center justify-between p-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
+            className="flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-50/60 transition-all group"
           >
             <div className="flex items-center gap-2 min-w-0">
               <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
@@ -279,7 +279,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               closeMobileMenu();
               onOpenQRCode();
             }}
-            className="w-full flex items-center justify-between p-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all text-left group"
+            className="w-full flex items-center justify-between p-2 rounded-xl bg-transparent border-0 hover:bg-emerald-50/60 transition-all text-left group"
             title="View & Download Digital Menu QR Code"
           >
             <div className="flex items-center gap-2 min-w-0">
