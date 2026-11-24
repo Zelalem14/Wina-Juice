@@ -8,12 +8,9 @@ import {
   Menu,
   X,
   Info,
-  Moon,
-  Sun,
   ChevronRight
 } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
-import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   onOpenQRCode: () => void;
@@ -31,7 +28,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [showBranchDropdown, setShowBranchDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { isDarkMode, toggleDarkMode } = useTheme();
   const currentBranch = branchContacts.find((b) => b.id === selectedBranch) || branchContacts[0];
 
   const closeMobileMenu = () => {
@@ -201,7 +197,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* 3. HAMBURGER MENU DRAWER (Contains ONLY About, QR Code & Night Mode) */}
+      {/* 3. HAMBURGER MENU DRAWER (Contains ONLY About & QR Code) */}
       {mobileMenuOpen && (
         <div className="border-t border-stone-200 bg-white px-4 py-4 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="max-w-xl mx-auto space-y-2.5">
@@ -262,52 +258,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
               </div>
             </button>
-
-            {/* 3. Night Mode / Dark Mode Toggle */}
-            <div className="flex items-center justify-between p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 transition-all">
-              <div className="flex items-center gap-3.5">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-2xs transition-all ${
-                  isDarkMode ? 'bg-amber-400/20 text-amber-300' : 'bg-stone-200 text-stone-700'
-                }`}>
-                  {isDarkMode ? <Moon className="w-5 h-5 text-amber-400" /> : <Sun className="w-5 h-5 text-amber-600" />}
-                </div>
-                <div>
-                  <div className="font-extrabold text-stone-900 text-sm sm:text-base flex items-center gap-1.5">
-                    <span>{isDarkMode ? 'Night Mode' : 'Light Mode'}</span>
-                    <span className="text-xs text-stone-500 font-sans font-semibold">
-                      ({isDarkMode ? 'የምሽት ገጽታ' : 'የቀን ገጽታ'})
-                    </span>
-                  </div>
-                  <p className="text-xs text-stone-500 mt-0.5">
-                    {isDarkMode ? 'Comfortable night theme is active' : 'Switch to comfortable night theme'}
-                  </p>
-                </div>
-              </div>
-
-              {/* Animated Switch Button */}
-              <button
-                type="button"
-                role="switch"
-                aria-checked={isDarkMode}
-                onClick={toggleDarkMode}
-                className={`relative inline-flex h-7 w-13 shrink-0 cursor-pointer rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none shadow-inner ml-2 ${
-                  isDarkMode ? 'bg-emerald-600' : 'bg-stone-300'
-                }`}
-                aria-label="Toggle Night Mode"
-              >
-                <span
-                  className={`pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out flex items-center justify-center ${
-                    isDarkMode ? 'translate-x-6' : 'translate-x-0'
-                  }`}
-                >
-                  {isDarkMode ? (
-                    <Moon className="w-3.5 h-3.5 text-emerald-800" />
-                  ) : (
-                    <Sun className="w-3.5 h-3.5 text-amber-600" />
-                  )}
-                </span>
-              </button>
-            </div>
           </div>
         </div>
       )}
