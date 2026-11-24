@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Utensils, MapPin, Info } from 'lucide-react';
+import { Home, Utensils, MapPin } from 'lucide-react';
 
 export const MobileBottomNav: React.FC = () => {
   const location = useLocation();
@@ -36,20 +36,7 @@ export const MobileBottomNav: React.FC = () => {
         <span className="text-[10px] mt-0.5">Menu (ሜኑ)</span>
       </Link>
 
-      {/* 3. About */}
-      <Link
-        to="/about"
-        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
-          location.pathname === '/about'
-            ? 'text-emerald-700 font-bold scale-105'
-            : 'text-stone-500 hover:text-stone-800'
-        }`}
-      >
-        <Info className={`w-5 h-5 ${location.pathname === '/about' ? 'stroke-[2.5]' : ''}`} />
-        <span className="text-[10px] mt-0.5">About</span>
-      </Link>
-
-      {/* 4. Branches */}
+      {/* 3. Branches */}
       <Link
         to="/branches"
         className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${

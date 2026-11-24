@@ -9,9 +9,9 @@ import {
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-stone-800">
+    <div className="w-full flex-1 flex flex-col bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-white">
       {/* 1. HERO SECTION (Clear, Large Typography & Focused) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-white py-6 sm:py-12 lg:py-20 px-3.5 sm:px-4 min-h-[calc(100dvh-110px)] md:min-h-[calc(100vh-68px)] flex items-center justify-center">
+      <section className="relative flex-1 w-full overflow-hidden text-white py-4 sm:py-10 lg:py-16 px-3.5 sm:px-4 flex items-center justify-center">
         {/* Ambient Glows */}
         <div className="absolute top-0 right-0 -mr-24 -mt-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 -ml-24 -mb-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-red-600/15 blur-3xl pointer-events-none" />

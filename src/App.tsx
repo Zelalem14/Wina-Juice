@@ -36,7 +36,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fbfbf9] text-stone-800">
+    <div className={`min-h-screen flex flex-col text-stone-800 ${isHomePage ? 'bg-emerald-950' : 'bg-[#fbfbf9]'}`}>
       {/* Main Top Navbar (Call button on top remains functional) */}
       <Navbar
         onOpenQRCode={() => setIsQRModalOpen(true)}
@@ -46,7 +46,7 @@ function AppContent() {
       />
 
       {/* Page Routing (pb-16 on mobile for bottom navigation bar clearance) */}
-      <main className={`flex-1 ${isHomePage ? 'pb-14 md:pb-0' : 'pb-16 md:pb-0'}`}>
+      <main className={`flex-1 flex flex-col ${isHomePage ? 'pb-12 md:pb-0 bg-emerald-950' : 'pb-16 md:pb-0'}`}>
         <Routes>
           {/* Home Page (Short, clean, focused hero section) */}
           <Route path="/" element={<HomePage />} />
