@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {
   Sparkles,
-  Clock,
   ShieldCheck,
   Leaf,
   GlassWater,
@@ -16,7 +15,7 @@ export const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fbfbf9] text-stone-800 pb-16">
+    <div className="min-h-screen bg-[#fbfbf9] text-stone-800 -mb-16 md:mb-0">
       {/* 1. HERO HEADER */}
       <section className="bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950 text-white py-10 sm:py-16 px-4 relative overflow-hidden">
         {/* Ambient Glows */}
@@ -37,13 +36,6 @@ export const AboutPage: React.FC = () => {
           <p className="text-emerald-100/90 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
             Welcome to Wina Juice (ዊና ጁስ) — Addis Ababa&apos;s premier destination for naturally pressed tropical juices, nutritious smoothies, handcrafted burgers, stone-baked pizzas, shawarma wraps, and traditional Ethiopian dishes.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6 text-xs">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 text-emerald-200 border border-white/15">
-              <Clock className="w-3.5 h-3.5 text-emerald-400" />
-              <span>7:00 AM – 10:00 PM Daily</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -114,9 +106,9 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* 3. POPULAR FOOD & BEVERAGES (Plain Text Food Names, Non-Clickable) */}
-      <section className="py-12 px-4 bg-stone-100/80 border-t border-b border-stone-200">
+      <section className="pt-10 sm:pt-12 pb-6 sm:pb-8 px-4 bg-stone-100/80 border-t border-stone-200">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-2">
               <Utensils className="w-3.5 h-3.5" />
               <span>Popular Categories • ተወዳጅ ምግቦች</span>
@@ -151,38 +143,6 @@ export const AboutPage: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. OPENING HOURS SCHEDULE */}
-      <section className="py-12 px-4 max-w-4xl mx-auto">
-        <div className="bg-emerald-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden text-center flex flex-col items-center">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 rounded-full bg-emerald-500/20 blur-2xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 rounded-full bg-red-600/15 blur-2xl pointer-events-none" />
-
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-800 text-emerald-200 text-xs font-bold mb-3">
-            <Clock className="w-3.5 h-3.5 text-emerald-300" />
-            <span>Working Schedule • የስራ ሰዓት</span>
-          </div>
-
-          <h3 className="text-2xl sm:text-3xl font-extrabold font-serif mb-2">
-            Opening Hours
-          </h3>
-
-          <p className="text-xs sm:text-sm text-emerald-200/90 mb-6 max-w-md mx-auto leading-relaxed">
-            We are open daily for dine-in, takeaway, and fresh orders.
-          </p>
-
-          <div className="w-full max-w-md bg-emerald-900/60 rounded-2xl p-4 sm:p-5 border border-emerald-800/80">
-            <div className="flex items-center justify-between text-sm sm:text-base">
-              <span className="text-emerald-200 font-medium">Monday – Sunday:</span>
-              <span className="font-bold text-yellow-300 font-mono text-base sm:text-lg">7:00 AM – 10:00 PM</span>
-            </div>
-            <div className="pt-2.5 mt-2.5 border-t border-emerald-800/60 flex items-center justify-center gap-2 text-xs text-emerald-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Open 7 days a week, including holidays</span>
-            </div>
           </div>
         </div>
       </section>
