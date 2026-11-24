@@ -9,7 +9,8 @@ import {
   X,
   Home,
   Utensils,
-  Clock
+  Clock,
+  Info
 } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
 
@@ -117,6 +118,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               Menu (ሜኑ)
             </Link>
             <Link
+              to="/about"
+              className={`hover:text-emerald-700 transition-colors py-1 ${
+                location.pathname === '/about' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
+              }`}
+            >
+              About
+            </Link>
+            <Link
               to="/branches"
               className={`hover:text-emerald-700 transition-colors py-1 ${
                 location.pathname === '/branches' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
@@ -192,11 +201,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* 3. MOBILE MENU SLIDE-DOWN DRAWER (Mobile only) */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-stone-200 bg-white px-4 py-4 space-y-3 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-4 gap-1.5">
             <Link
               to="/"
               onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-3 rounded-2xl text-xs font-bold transition-all ${
+              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
                 location.pathname === '/'
                   ? 'bg-emerald-700 text-white shadow-sm'
                   : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
@@ -209,20 +218,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Link
               to="/menu"
               onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-3 rounded-2xl text-xs font-bold transition-all ${
+              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
                 location.pathname === '/menu'
                   ? 'bg-emerald-700 text-white shadow-sm'
                   : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
               }`}
             >
               <Utensils className="w-4 h-4 mb-1" />
-              <span>Menu (ሜኑ)</span>
+              <span>Menu</span>
+            </Link>
+
+            <Link
+              to="/about"
+              onClick={closeMobileMenu}
+              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
+                location.pathname === '/about'
+                  ? 'bg-emerald-700 text-white shadow-sm'
+                  : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
+              }`}
+            >
+              <Info className="w-4 h-4 mb-1" />
+              <span>About</span>
             </Link>
 
             <Link
               to="/branches"
               onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-3 rounded-2xl text-xs font-bold transition-all ${
+              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
                 location.pathname === '/branches'
                   ? 'bg-emerald-700 text-white shadow-sm'
                   : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'

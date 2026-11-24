@@ -1,15 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Utensils, MapPin, Phone } from 'lucide-react';
+import { Home, Utensils, MapPin, Info } from 'lucide-react';
 
-interface MobileBottomNavProps {
-  selectedBranch?: string;
-  onOpenCallModal?: () => void;
-}
-
-export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
-  onOpenCallModal,
-}) => {
+export const MobileBottomNav: React.FC = () => {
   const location = useLocation();
 
   return (
@@ -39,11 +32,24 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             : 'text-stone-500 hover:text-stone-800'
         }`}
       >
-        <Utensils className={`w-5 h-5 ${location.pathname === '/menu' ? 'stroke-[2.5]' : ''}`} />
+        <Utensils className={`w-5 h-5 ${location.pathname.startsWith('/menu') || location.pathname.startsWith('/category') ? 'stroke-[2.5]' : ''}`} />
         <span className="text-[10px] mt-0.5">Menu (ሜኑ)</span>
       </Link>
 
-      {/* 3. Branches */}
+      {/* 3. About */}
+      <Link
+        to="/about"
+        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
+          location.pathname === '/about'
+            ? 'text-emerald-700 font-bold scale-105'
+            : 'text-stone-500 hover:text-stone-800'
+        }`}
+      >
+        <Info className={`w-5 h-5 ${location.pathname === '/about' ? 'stroke-[2.5]' : ''}`} />
+        <span className="text-[10px] mt-0.5">About</span>
+      </Link>
+
+      {/* 4. Branches */}
       <Link
         to="/branches"
         className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
@@ -55,19 +61,6 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <MapPin className={`w-5 h-5 ${location.pathname === '/branches' ? 'stroke-[2.5]' : ''}`} />
         <span className="text-[10px] mt-0.5">Branches</span>
       </Link>
-
-      {/* 4. Branch Call Action (Opens branch call popup) */}
-      <button
-        onClick={onOpenCallModal}
-        className="flex flex-col items-center justify-center py-1 px-2.5 rounded-xl text-red-700 hover:text-red-800 transition-all font-semibold active:scale-95"
-        title="Call a Wina Juice Branch"
-        aria-label="Call a Wina Juice Branch"
-      >
-        <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center">
-          <Phone className="w-3 h-3 text-red-700" />
-        </div>
-        <span className="text-[10px] mt-0.5">Call</span>
-      </button>
     </nav>
   );
 };
