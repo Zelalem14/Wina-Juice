@@ -243,35 +243,35 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           ref={menuRef}
-          className="border-t border-stone-200 bg-white px-4 py-4 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200"
+          className="border-t border-stone-200 bg-white px-3 sm:px-4 py-2.5 sm:py-3 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200"
         >
-          <div className="max-w-xl mx-auto space-y-2.5">
+          <div className="max-w-sm mx-auto space-y-1.5">
             {/* Header Title */}
-            <div className="flex items-center justify-between text-xs font-bold text-stone-400 uppercase tracking-wider px-1">
+            <div className="flex items-center justify-between text-[10px] font-bold text-stone-400 uppercase tracking-wider px-1 mb-0.5">
               <span>Menu Options • አማራጮች</span>
-              <span className="text-[11px] font-normal text-stone-400">Wina Juice</span>
+              <span className="text-[10px] font-normal text-stone-400">Wina Juice</span>
             </div>
 
             {/* 1. About Section */}
             <Link
               to="/about"
               onClick={closeMobileMenu}
-              className="flex items-center justify-between p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
+              className="flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
             >
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                  <Info className="w-5 h-5 text-emerald-700" />
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                  <Info className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
-                <div>
-                  <div className="font-extrabold text-stone-900 text-sm sm:text-base group-hover:text-emerald-700 transition-colors">
-                    About Wina Juice <span className="text-xs text-emerald-700 font-sans font-bold ml-1.5">(ስለ እኛ)</span>
+                <div className="min-w-0">
+                  <div className="font-bold text-stone-900 text-xs sm:text-sm group-hover:text-emerald-700 transition-colors">
+                    About Wina Juice <span className="text-[11px] text-emerald-700 font-sans font-bold ml-1">(ስለ እኛ)</span>
                   </div>
-                  <p className="text-xs text-stone-500 mt-0.5">
+                  <p className="text-[10px] sm:text-[11px] text-stone-500 leading-tight">
                     Our restaurant story, 100% natural ingredients, hours & commitment
                   </p>
                 </div>
               </div>
-              <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+              <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
             </Link>
 
             {/* 2. QR Code Section */}
@@ -280,27 +280,27 @@ export const Navbar: React.FC<NavbarProps> = ({
                 closeMobileMenu();
                 onOpenQRCode();
               }}
-              className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all text-left group"
+              className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all text-left group"
               title="View & Download Digital Menu QR Code"
             >
-              <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                  <QrCode className="w-5 h-5 text-emerald-700" />
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                  <QrCode className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
-                <div>
-                  <div className="font-extrabold text-stone-900 text-sm sm:text-base group-hover:text-emerald-700 transition-colors">
-                    Digital Menu QR Code <span className="text-xs text-emerald-700 font-sans font-bold ml-1.5">(QR ኮድ)</span>
+                <div className="min-w-0">
+                  <div className="font-bold text-stone-900 text-xs sm:text-sm group-hover:text-emerald-700 transition-colors">
+                    Digital Menu QR Code <span className="text-[11px] text-emerald-700 font-sans font-bold ml-1">(QR ኮድ)</span>
                   </div>
-                  <p className="text-xs text-stone-500 mt-0.5">
+                  <p className="text-[10px] sm:text-[11px] text-stone-500 leading-tight">
                     View & download scannable digital menu QR code
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded-lg hidden sm:inline shadow-2xs">
+                <span className="text-[9px] font-bold text-emerald-800 bg-emerald-100/90 px-1.5 py-0.5 rounded hidden sm:inline shadow-2xs">
                   View & Download
                 </span>
-                <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
+                <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
               </div>
             </button>
           </div>
