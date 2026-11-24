@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Phone,
@@ -30,10 +30,51 @@ export const Navbar: React.FC<NavbarProps> = ({
   const location = useLocation();
   const currentBranch = branchContacts.find((b) => b.id === selectedBranch) || branchContacts[0];
 
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setShowBranchDropdown(false);
   };
+
+  // 1. Auto-close hamburger menu on navigation / route change
+  useEffect(() => {
+    closeMobileMenu();
+  }, [location.pathname]);
+
+  // 2. Auto-close hamburger menu when tapping or clicking outside, or on Escape key
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(target)
+      ) {
+        closeMobileMenu();
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick, { passive: true });
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs transition-all">
@@ -182,7 +223,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Three-line Hamburger Menu Button (☰) */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              ref={buttonRef}
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
               className="p-2 rounded-xl text-stone-700 hover:text-emerald-800 hover:bg-stone-100 transition-colors"
               aria-label="Toggle navigation menu"
               title="Navigation Menu"
@@ -199,7 +241,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* 3. HAMBURGER MENU DRAWER (Contains ONLY About & QR Code) */}
       {mobileMenuOpen && (
-        <div className="border-t border-stone-200 bg-white px-4 py-4 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+        <div
+          ref={menuRef}
+          className="border-t border-stone-200 bg-white px-4 py-4 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200"
+        >
           <div className="max-w-xl mx-auto space-y-2.5">
             {/* Header Title */}
             <div className="flex items-center justify-between text-xs font-bold text-stone-400 uppercase tracking-wider px-1">
