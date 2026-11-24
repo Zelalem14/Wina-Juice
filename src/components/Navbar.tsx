@@ -243,67 +243,60 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           ref={menuRef}
-          className="border-t border-stone-200 bg-white px-3 sm:px-4 py-2.5 sm:py-3 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200"
+          className="absolute right-0 top-full w-[50vw] min-w-[210px] max-w-sm bg-white border-l border-b border-stone-200 rounded-bl-2xl shadow-xl px-2.5 sm:px-3 py-2 sm:py-2.5 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50"
         >
-          <div className="max-w-sm mx-auto space-y-1.5">
-            {/* Header Title */}
-            <div className="flex items-center justify-between text-[10px] font-bold text-stone-400 uppercase tracking-wider px-1 mb-0.5">
-              <span>Menu Options • አማራጮች</span>
-              <span className="text-[10px] font-normal text-stone-400">Wina Juice</span>
-            </div>
-
-            {/* 1. About Section */}
-            <Link
-              to="/about"
-              onClick={closeMobileMenu}
-              className="flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
-            >
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                  <Info className="w-3.5 h-3.5 text-emerald-700" />
-                </div>
-                <div className="min-w-0">
-                  <div className="font-bold text-stone-900 text-xs sm:text-sm group-hover:text-emerald-700 transition-colors">
-                    About Wina Juice <span className="text-[11px] text-emerald-700 font-sans font-bold ml-1">(ስለ እኛ)</span>
-                  </div>
-                  <p className="text-[10px] sm:text-[11px] text-stone-500 leading-tight">
-                    Our restaurant story, 100% natural ingredients, hours & commitment
-                  </p>
-                </div>
-              </div>
-              <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
-            </Link>
-
-            {/* 2. QR Code Section */}
-            <button
-              onClick={() => {
-                closeMobileMenu();
-                onOpenQRCode();
-              }}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all text-left group"
-              title="View & Download Digital Menu QR Code"
-            >
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                  <QrCode className="w-3.5 h-3.5 text-emerald-700" />
-                </div>
-                <div className="min-w-0">
-                  <div className="font-bold text-stone-900 text-xs sm:text-sm group-hover:text-emerald-700 transition-colors">
-                    Digital Menu QR Code <span className="text-[11px] text-emerald-700 font-sans font-bold ml-1">(QR ኮድ)</span>
-                  </div>
-                  <p className="text-[10px] sm:text-[11px] text-stone-500 leading-tight">
-                    View & download scannable digital menu QR code
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                <span className="text-[9px] font-bold text-emerald-800 bg-emerald-100/90 px-1.5 py-0.5 rounded hidden sm:inline shadow-2xs">
-                  View & Download
-                </span>
-                <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
-              </div>
-            </button>
+          {/* Header Title */}
+          <div className="flex items-center justify-between text-[10px] font-bold text-stone-400 uppercase tracking-wider px-1 mb-1">
+            <span className="truncate">Menu Options • አማራጮች</span>
+            <span className="text-[10px] font-normal text-stone-400 shrink-0 ml-1">Wina Juice</span>
           </div>
+
+          {/* 1. About Section */}
+          <Link
+            to="/about"
+            onClick={closeMobileMenu}
+            className="flex items-center justify-between p-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
+          >
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                <Info className="w-3.5 h-3.5 text-emerald-700" />
+              </div>
+              <div className="min-w-0">
+                <div className="font-bold text-stone-900 text-xs group-hover:text-emerald-700 transition-colors leading-tight">
+                  About Wina Juice <span className="text-[10px] sm:text-[11px] text-emerald-700 font-sans font-bold ml-0.5">(ስለ እኛ)</span>
+                </div>
+                <p className="text-[10px] text-stone-500 leading-tight mt-0.5 line-clamp-2">
+                  Our restaurant story, 100% natural ingredients, hours & commitment
+                </p>
+              </div>
+            </div>
+            <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+          </Link>
+
+          {/* 2. QR Code Section */}
+          <button
+            onClick={() => {
+              closeMobileMenu();
+              onOpenQRCode();
+            }}
+            className="w-full flex items-center justify-between p-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all text-left group"
+            title="View & Download Digital Menu QR Code"
+          >
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                <QrCode className="w-3.5 h-3.5 text-emerald-700" />
+              </div>
+              <div className="min-w-0">
+                <div className="font-bold text-stone-900 text-xs group-hover:text-emerald-700 transition-colors leading-tight">
+                  Digital Menu QR Code <span className="text-[10px] sm:text-[11px] text-emerald-700 font-sans font-bold ml-0.5">(QR ኮድ)</span>
+                </div>
+                <p className="text-[10px] text-stone-500 leading-tight mt-0.5 line-clamp-2">
+                  View & download scannable digital menu QR code
+                </p>
+              </div>
+            </div>
+            <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+          </button>
         </div>
       )}
     </header>
