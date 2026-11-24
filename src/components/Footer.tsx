@@ -6,7 +6,10 @@ export const Footer: React.FC = () => {
   const location = useLocation();
   const isMenuPage = location.pathname === '/menu' || location.pathname.startsWith('/category');
   const isBranchesPage = location.pathname === '/branches';
-  const hideBrandDescription = isMenuPage || isBranchesPage;
+
+  if (isMenuPage || isBranchesPage) {
+    return null;
+  }
 
   return (
     <footer className="bg-stone-900 text-stone-300 pt-10 sm:pt-12 pb-6 sm:pb-8 px-4 border-t border-stone-800">
@@ -31,17 +34,13 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
             </div>
-            {!hideBrandDescription && (
-              <>
-                <p className="text-stone-400 text-xs sm:text-sm leading-relaxed max-w-md mb-4">
-                  Your premier destination for natural fresh juices, handcrafted smoothies, burgers, Italian pizza, traditional Ethiopian favorites, and savory shawarma wraps in Addis Ababa.
-                </p>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-300">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>100% Fresh Natural Juices & Dine-In / Takeaway</span>
-                </div>
-              </>
-            )}
+            <p className="text-stone-400 text-xs sm:text-sm leading-relaxed max-w-md mb-4">
+              Your premier destination for natural fresh juices, handcrafted smoothies, burgers, Italian pizza, traditional Ethiopian favorites, and savory shawarma wraps in Addis Ababa.
+            </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-stone-800 border border-stone-700 text-xs text-stone-300">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>100% Fresh Natural Juices & Dine-In / Takeaway</span>
+            </div>
           </div>
 
           {/* Quick Categories */}

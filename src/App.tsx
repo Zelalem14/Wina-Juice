@@ -23,6 +23,7 @@ function AppContent() {
 
   const isHomePage = location.pathname === '/';
   const isMenuPage = location.pathname === '/menu' || location.pathname.startsWith('/category');
+  const isBranchesPage = location.pathname === '/branches';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,8 +70,8 @@ function AppContent() {
         </Routes>
       </main>
 
-      {/* Footer (Rendered on non-home & non-menu pages, keeping them clean & focused) */}
-      {!isHomePage && !isMenuPage && <Footer />}
+      {/* Footer (Rendered on About page only, keeping Home, Menu & Branches short & focused) */}
+      {!isHomePage && !isMenuPage && !isBranchesPage && <Footer />}
 
       {/* Mobile Sticky Bottom Navigation Bar (md:hidden) */}
       <MobileBottomNav />
