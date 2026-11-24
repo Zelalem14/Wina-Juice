@@ -244,18 +244,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           ref={menuRef}
-          className={`absolute right-2 sm:right-4 top-full w-[54vw] min-w-[220px] max-w-sm rounded-2xl p-2.5 sm:p-3 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200 z-50 ${
+          className={`absolute right-2 sm:right-4 top-full w-[50vw] min-w-[200px] max-w-xs sm:max-w-sm rounded-2xl p-2.5 sm:p-3 space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50 ${
             isHomePage
               ? 'bg-emerald-950/85 backdrop-blur-xl border border-emerald-400/25 shadow-[0_8px_30px_rgb(0,0,0,0.5)]'
               : 'bg-white/95 backdrop-blur-xl border border-stone-200 shadow-xl'
           }`}
         >
           {/* Header Title */}
-          <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider px-1 mb-1">
-            <span className={`truncate ${isHomePage ? 'text-emerald-300 drop-shadow-xs' : 'text-stone-400'}`}>
-              Menu Options • አማራጮች
+          <div className="flex items-center justify-between text-[10px] font-extrabold uppercase tracking-wider px-1 pb-1 border-b border-white/10">
+            <span className={isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]' : 'text-stone-500'}>
+              Menu Options
             </span>
-            <span className={`text-[10px] font-normal shrink-0 ml-1 ${isHomePage ? 'text-emerald-200/80' : 'text-stone-400'}`}>
+            <span className={isHomePage ? 'text-emerald-200/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]' : 'text-stone-500'}>
               Wina Juice
             </span>
           </div>
@@ -264,52 +264,34 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className={`flex items-center justify-between p-2 rounded-xl bg-transparent border-0 transition-all group ${
+            className={`flex items-center justify-between px-2.5 py-2 rounded-xl bg-transparent border-0 transition-all group ${
               isHomePage
                 ? 'hover:bg-white/10 active:bg-white/15'
                 : 'hover:bg-emerald-500/10 active:bg-emerald-500/15'
             }`}
           >
-            <div className="flex items-center gap-2 min-w-0">
+            <div className="flex items-center gap-2.5 min-w-0">
               <div
                 className={`w-7 h-7 flex items-center justify-center shrink-0 bg-transparent group-hover:scale-110 transition-transform ${
-                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]' : 'text-emerald-700'
+                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]' : 'text-emerald-700'
                 }`}
               >
                 <Info className="w-4 h-4 stroke-[2.5]" />
               </div>
-              <div className="min-w-0">
-                <div
-                  className={`font-extrabold text-xs leading-tight transition-colors ${
-                    isHomePage
-                      ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] group-hover:text-emerald-200'
-                      : 'text-stone-900 group-hover:text-emerald-700'
-                  }`}
-                >
-                  About Wina Juice{' '}
-                  <span
-                    className={`text-[10px] sm:text-[11px] font-sans font-bold ml-0.5 ${
-                      isHomePage ? 'text-emerald-300' : 'text-emerald-700'
-                    }`}
-                  >
-                    (ስለ እኛ)
-                  </span>
-                </div>
-                <p
-                  className={`text-[10px] leading-tight mt-0.5 line-clamp-2 ${
-                    isHomePage
-                      ? 'text-emerald-100 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)]'
-                      : 'text-stone-600 font-medium'
-                  }`}
-                >
-                  Our restaurant story, 100% natural ingredients, hours & commitment
-                </p>
-              </div>
+              <span
+                className={`font-extrabold text-xs sm:text-sm transition-colors truncate ${
+                  isHomePage
+                    ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-emerald-200'
+                    : 'text-stone-900 group-hover:text-emerald-700'
+                }`}
+              >
+                About Wina Juice
+              </span>
             </div>
             <ChevronRight
-              className={`w-3.5 h-3.5 transition-all shrink-0 ml-1 ${
+              className={`w-4 h-4 stroke-[2.5] transition-all shrink-0 ml-1.5 ${
                 isHomePage
-                  ? 'text-emerald-200 group-hover:text-white group-hover:translate-x-0.5'
+                  ? 'text-emerald-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-white group-hover:translate-x-0.5'
                   : 'text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5'
               }`}
             />
@@ -321,53 +303,35 @@ export const Navbar: React.FC<NavbarProps> = ({
               closeMobileMenu();
               onOpenQRCode();
             }}
-            className={`w-full flex items-center justify-between p-2 rounded-xl bg-transparent border-0 transition-all text-left group ${
+            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl bg-transparent border-0 transition-all text-left group ${
               isHomePage
                 ? 'hover:bg-white/10 active:bg-white/15'
                 : 'hover:bg-emerald-500/10 active:bg-emerald-500/15'
             }`}
-            title="View & Download Digital Menu QR Code"
+            title="View & Download Digital QR Code"
           >
-            <div className="flex items-center gap-2 min-w-0">
+            <div className="flex items-center gap-2.5 min-w-0">
               <div
                 className={`w-7 h-7 flex items-center justify-center shrink-0 bg-transparent group-hover:scale-110 transition-transform ${
-                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]' : 'text-emerald-700'
+                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]' : 'text-emerald-700'
                 }`}
               >
                 <QrCode className="w-4 h-4 stroke-[2.5]" />
               </div>
-              <div className="min-w-0">
-                <div
-                  className={`font-extrabold text-xs leading-tight transition-colors ${
-                    isHomePage
-                      ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] group-hover:text-emerald-200'
-                      : 'text-stone-900 group-hover:text-emerald-700'
-                  }`}
-                >
-                  Digital Menu QR Code{' '}
-                  <span
-                    className={`text-[10px] sm:text-[11px] font-sans font-bold ml-0.5 ${
-                      isHomePage ? 'text-emerald-300' : 'text-emerald-700'
-                    }`}
-                  >
-                    (QR ኮድ)
-                  </span>
-                </div>
-                <p
-                  className={`text-[10px] leading-tight mt-0.5 line-clamp-2 ${
-                    isHomePage
-                      ? 'text-emerald-100 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)]'
-                      : 'text-stone-600 font-medium'
-                  }`}
-                >
-                  View & download scannable digital menu QR code
-                </p>
-              </div>
+              <span
+                className={`font-extrabold text-xs sm:text-sm transition-colors truncate ${
+                  isHomePage
+                    ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-emerald-200'
+                    : 'text-stone-900 group-hover:text-emerald-700'
+                }`}
+              >
+                Digital QR Code
+              </span>
             </div>
             <ChevronRight
-              className={`w-3.5 h-3.5 transition-all shrink-0 ml-1 ${
+              className={`w-4 h-4 stroke-[2.5] transition-all shrink-0 ml-1.5 ${
                 isHomePage
-                  ? 'text-emerald-200 group-hover:text-white group-hover:translate-x-0.5'
+                  ? 'text-emerald-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-white group-hover:translate-x-0.5'
                   : 'text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5'
               }`}
             />
