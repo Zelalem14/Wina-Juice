@@ -11,6 +11,7 @@ import { AboutPage } from './pages/AboutPage';
 import { BranchesPage } from './pages/BranchesPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { branchContacts } from './data/menuData';
 import { ArrowUp } from 'lucide-react';
 
@@ -103,11 +104,13 @@ function AppContent() {
 
 export function App() {
   return (
-    <LanguageProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

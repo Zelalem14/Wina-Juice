@@ -7,12 +7,13 @@ import {
   QrCode,
   Menu,
   X,
-  Home,
-  Utensils,
-  Clock,
-  Info
+  Info,
+  Moon,
+  Sun,
+  ChevronRight
 } from 'lucide-react';
 import { branchContacts } from '../data/menuData';
+import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   onOpenQRCode: () => void;
@@ -30,6 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [showBranchDropdown, setShowBranchDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const currentBranch = branchContacts.find((b) => b.id === selectedBranch) || branchContacts[0];
 
   const closeMobileMenu = () => {
@@ -182,11 +184,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Mobile Hamburger Menu Button (Visible on mobile only) */}
+            {/* Three-line Hamburger Menu Button (☰) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-xl text-stone-700 hover:text-emerald-800 hover:bg-stone-100 transition-colors"
-              aria-label="Toggle mobile navigation menu"
+              className="p-2 rounded-xl text-stone-700 hover:text-emerald-800 hover:bg-stone-100 transition-colors"
+              aria-label="Toggle navigation menu"
+              title="Navigation Menu"
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5 text-stone-800" />
@@ -198,99 +201,113 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* 3. MOBILE MENU SLIDE-DOWN DRAWER (Mobile only) */}
+      {/* 3. HAMBURGER MENU DRAWER (Contains ONLY About, QR Code & Night Mode) */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-stone-200 bg-white px-4 py-4 space-y-3 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="grid grid-cols-4 gap-1.5">
-            <Link
-              to="/"
-              onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
-                location.pathname === '/'
-                  ? 'bg-emerald-700 text-white shadow-sm'
-                  : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
-              }`}
-            >
-              <Home className="w-4 h-4 mb-1" />
-              <span>Home</span>
-            </Link>
+        <div className="border-t border-stone-200 bg-white px-4 py-4 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="max-w-xl mx-auto space-y-2.5">
+            {/* Header Title */}
+            <div className="flex items-center justify-between text-xs font-bold text-stone-400 uppercase tracking-wider px-1">
+              <span>Menu Options • አማራጮች</span>
+              <span className="text-[11px] font-normal text-stone-400">Wina Juice</span>
+            </div>
 
-            <Link
-              to="/menu"
-              onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
-                location.pathname === '/menu'
-                  ? 'bg-emerald-700 text-white shadow-sm'
-                  : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
-              }`}
-            >
-              <Utensils className="w-4 h-4 mb-1" />
-              <span>Menu</span>
-            </Link>
-
+            {/* 1. About Section */}
             <Link
               to="/about"
               onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
-                location.pathname === '/about'
-                  ? 'bg-emerald-700 text-white shadow-sm'
-                  : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
-              }`}
+              className="flex items-center justify-between p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
             >
-              <Info className="w-4 h-4 mb-1" />
-              <span>About</span>
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                  <Info className="w-5 h-5 text-emerald-700" />
+                </div>
+                <div>
+                  <div className="font-extrabold text-stone-900 text-sm sm:text-base group-hover:text-emerald-700 transition-colors">
+                    About Wina Juice <span className="text-xs text-emerald-700 font-sans font-bold ml-1.5">(ስለ እኛ)</span>
+                  </div>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    Our restaurant story, 100% natural ingredients, hours & commitment
+                  </p>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
             </Link>
 
-            <Link
-              to="/branches"
-              onClick={closeMobileMenu}
-              className={`flex flex-col items-center justify-center p-2.5 rounded-2xl text-[11px] font-bold transition-all ${
-                location.pathname === '/branches'
-                  ? 'bg-emerald-700 text-white shadow-sm'
-                  : 'bg-stone-50 text-stone-700 hover:bg-stone-100 border border-stone-200/80'
-              }`}
-            >
-              <MapPin className="w-4 h-4 mb-1" />
-              <span>Branches</span>
-            </Link>
-          </div>
-
-          {/* Quick Call Branch Buttons on Mobile Drawer */}
-          <div className="pt-2 border-t border-stone-100">
-            <div className="text-[11px] font-bold text-stone-400 uppercase tracking-wider mb-2">
-              Call Direct to Branch
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              {branchContacts.map((b) => (
-                <a
-                  key={b.id}
-                  href={b.telUri}
-                  onClick={closeMobileMenu}
-                  className="flex items-center justify-between p-2 rounded-xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-colors"
-                >
-                  <span className="font-bold text-stone-800 truncate">{b.nameAm}</span>
-                  <span className="font-mono text-[11px] font-extrabold text-red-700">{b.phone}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Modal Trigger & Opening Info */}
-          <div className="pt-2 flex items-center justify-between text-xs text-stone-500">
+            {/* 2. QR Code Section */}
             <button
               onClick={() => {
                 closeMobileMenu();
                 onOpenQRCode();
               }}
-              className="inline-flex items-center gap-1.5 text-emerald-700 font-bold hover:underline"
+              className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 hover:bg-emerald-50 hover:border-emerald-300 transition-all text-left group"
+              title="View & Download Digital Menu QR Code"
             >
-              <QrCode className="w-3.5 h-3.5" />
-              <span>Table Stand QR Code</span>
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                  <QrCode className="w-5 h-5 text-emerald-700" />
+                </div>
+                <div>
+                  <div className="font-extrabold text-stone-900 text-sm sm:text-base group-hover:text-emerald-700 transition-colors">
+                    Digital Menu QR Code <span className="text-xs text-emerald-700 font-sans font-bold ml-1.5">(QR ኮድ)</span>
+                  </div>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    View & download scannable digital menu QR code
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded-lg hidden sm:inline shadow-2xs">
+                  View & Download
+                </span>
+                <ChevronRight className="w-4 h-4 text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
+              </div>
             </button>
-            <span className="flex items-center gap-1 text-[11px]">
-              <Clock className="w-3 h-3 text-stone-400" />
-              <span>7 AM – 10 PM</span>
-            </span>
+
+            {/* 3. Night Mode / Dark Mode Toggle */}
+            <div className="flex items-center justify-between p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 transition-all">
+              <div className="flex items-center gap-3.5">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-2xs transition-all ${
+                  isDarkMode ? 'bg-amber-400/20 text-amber-300' : 'bg-stone-200 text-stone-700'
+                }`}>
+                  {isDarkMode ? <Moon className="w-5 h-5 text-amber-400" /> : <Sun className="w-5 h-5 text-amber-600" />}
+                </div>
+                <div>
+                  <div className="font-extrabold text-stone-900 text-sm sm:text-base flex items-center gap-1.5">
+                    <span>{isDarkMode ? 'Night Mode' : 'Light Mode'}</span>
+                    <span className="text-xs text-stone-500 font-sans font-semibold">
+                      ({isDarkMode ? 'የምሽት ገጽታ' : 'የቀን ገጽታ'})
+                    </span>
+                  </div>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    {isDarkMode ? 'Comfortable night theme is active' : 'Switch to comfortable night theme'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Animated Switch Button */}
+              <button
+                type="button"
+                role="switch"
+                aria-checked={isDarkMode}
+                onClick={toggleDarkMode}
+                className={`relative inline-flex h-7 w-13 shrink-0 cursor-pointer rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none shadow-inner ml-2 ${
+                  isDarkMode ? 'bg-emerald-600' : 'bg-stone-300'
+                }`}
+                aria-label="Toggle Night Mode"
+              >
+                <span
+                  className={`pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out flex items-center justify-center ${
+                    isDarkMode ? 'translate-x-6' : 'translate-x-0'
+                  }`}
+                >
+                  {isDarkMode ? (
+                    <Moon className="w-3.5 h-3.5 text-emerald-800" />
+                  ) : (
+                    <Sun className="w-3.5 h-3.5 text-amber-600" />
+                  )}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       )}
