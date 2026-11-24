@@ -22,6 +22,7 @@ function AppContent() {
   const location = useLocation();
 
   const isHomePage = location.pathname === '/';
+  const isMenuPage = location.pathname === '/menu' || location.pathname.startsWith('/category');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,8 +69,8 @@ function AppContent() {
         </Routes>
       </main>
 
-      {/* Footer (Rendered on non-home pages only, keeping home short & clean) */}
-      {!isHomePage && <Footer />}
+      {/* Footer (Rendered on non-home & non-menu pages, keeping them clean & focused) */}
+      {!isHomePage && !isMenuPage && <Footer />}
 
       {/* Mobile Sticky Bottom Navigation Bar (md:hidden) */}
       <MobileBottomNav />
