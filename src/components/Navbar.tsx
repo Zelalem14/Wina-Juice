@@ -78,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs transition-all">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-xs transition-all duration-300">
       {/* 1. TOP TICKER: 6 Addis Ababa Branches */}
       <div className="bg-emerald-900 text-emerald-100 text-[11px] sm:text-xs py-1.5 px-3 sm:px-4 border-b border-emerald-950">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-3">
@@ -116,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={closeMobileMenu}
             className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
           >
-            <div className="relative flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl overflow-hidden shadow-xs border border-stone-200 group-hover:scale-105 transition-transform bg-white">
+            <div className="relative flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl overflow-hidden shadow-xs border border-stone-200 group-hover:scale-105 group-active:scale-95 transition-transform duration-300 bg-white">
               <img
                 src="/wina-logo.png"
                 alt="Wina Juice Official Logo"
@@ -143,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-stone-700">
             <Link
               to="/"
-              className={`hover:text-emerald-700 transition-colors py-1 ${
+              className={`hover:text-emerald-700 transition-all duration-200 py-1 ${
                 location.pathname === '/' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
               }`}
             >
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Link>
             <Link
               to="/menu"
-              className={`hover:text-emerald-700 transition-colors py-1 ${
+              className={`hover:text-emerald-700 transition-all duration-200 py-1 ${
                 location.pathname === '/menu' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
               }`}
             >
@@ -159,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Link>
             <Link
               to="/about"
-              className={`hover:text-emerald-700 transition-colors py-1 ${
+              className={`hover:text-emerald-700 transition-all duration-200 py-1 ${
                 location.pathname === '/about' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
               }`}
             >
@@ -167,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Link>
             <Link
               to="/branches"
-              className={`hover:text-emerald-700 transition-colors py-1 ${
+              className={`hover:text-emerald-700 transition-all duration-200 py-1 ${
                 location.pathname === '/branches' ? 'text-emerald-700 font-bold border-b-2 border-emerald-600' : ''
               }`}
             >
@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     setShowBranchDropdown(!showBranchDropdown);
                   }
                 }}
-                className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-red-700 text-white hover:bg-red-800 transition-all shadow-2xs"
+                className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold bg-red-700 text-white hover:bg-red-800 active:scale-95 transition-all duration-200 shadow-2xs hover:shadow-xs"
                 title="Call a Wina Juice Branch"
               >
                 <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
@@ -226,7 +226,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               ref={buttonRef}
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="p-2 rounded-xl text-stone-900 hover:text-emerald-700 transition-colors bg-transparent border-0 outline-none shadow-none focus:outline-none focus:ring-0 active:bg-transparent"
+              className="p-2 rounded-xl text-stone-900 hover:text-emerald-700 active:scale-90 transition-all duration-200 bg-transparent border-0 outline-none shadow-none focus:outline-none focus:ring-0 active:bg-transparent"
               aria-label="Toggle navigation menu"
               title="Navigation Menu"
             >
@@ -264,7 +264,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className="flex items-center justify-between px-2.5 py-2 rounded-xl bg-white text-black hover:bg-stone-100 transition-all group shadow-sm"
+            className="flex items-center justify-between px-2.5 py-2 rounded-xl bg-white text-black hover:bg-stone-100 active:scale-[0.98] transition-all duration-200 group shadow-sm"
           >
             <div className="flex items-center gap-2.5 min-w-0">
               <div className="w-7 h-7 flex items-center justify-center shrink-0 bg-transparent text-emerald-700 group-hover:scale-110 transition-transform">
@@ -283,7 +283,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               closeMobileMenu();
               onOpenQRCode();
             }}
-            className="w-full flex items-center justify-between px-2.5 py-2 rounded-xl bg-white text-black hover:bg-stone-100 transition-all text-left group shadow-sm"
+            className="w-full flex items-center justify-between px-2.5 py-2 rounded-xl bg-white text-black hover:bg-stone-100 active:scale-[0.98] transition-all duration-200 text-left group shadow-sm"
             title="View & Download Digital QR Code"
           >
             <div className="flex items-center gap-2.5 min-w-0">

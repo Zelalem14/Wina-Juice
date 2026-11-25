@@ -13,7 +13,7 @@ export const MobileBottomNav: React.FC = () => {
       {/* 1. Home */}
       <Link
         to="/"
-        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
+        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl active:scale-95 transition-all duration-200 ${
           location.pathname === '/'
             ? 'text-emerald-700 font-bold scale-105'
             : 'text-stone-500 hover:text-stone-800'
@@ -26,7 +26,7 @@ export const MobileBottomNav: React.FC = () => {
       {/* 2. Menu */}
       <Link
         to="/menu"
-        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
+        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl active:scale-95 transition-all duration-200 ${
           location.pathname === '/menu' || location.pathname.startsWith('/category')
             ? 'text-emerald-700 font-bold scale-105'
             : 'text-stone-500 hover:text-stone-800'
@@ -39,7 +39,7 @@ export const MobileBottomNav: React.FC = () => {
       {/* 3. Branches */}
       <Link
         to="/branches"
-        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
+        className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl active:scale-95 transition-all duration-200 ${
           location.pathname === '/branches'
             ? 'text-emerald-700 font-bold scale-105'
             : 'text-stone-500 hover:text-stone-800'
