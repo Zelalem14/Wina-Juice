@@ -264,37 +264,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className={`flex items-center justify-between px-2.5 py-2 rounded-xl bg-transparent border-0 transition-all group ${
-              isHomePage
-                ? 'hover:bg-white/10 active:bg-white/15'
-                : 'hover:bg-emerald-500/10 active:bg-emerald-500/15'
-            }`}
+            className="flex items-center justify-between px-2.5 py-2 rounded-xl bg-white text-black hover:bg-stone-100 transition-all group shadow-sm"
           >
             <div className="flex items-center gap-2.5 min-w-0">
-              <div
-                className={`w-7 h-7 flex items-center justify-center shrink-0 bg-transparent group-hover:scale-110 transition-transform ${
-                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]' : 'text-emerald-700'
-                }`}
-              >
+              <div className="w-7 h-7 flex items-center justify-center shrink-0 bg-transparent text-emerald-700 group-hover:scale-110 transition-transform">
                 <Info className="w-4 h-4 stroke-[2.5]" />
               </div>
-              <span
-                className={`font-extrabold text-xs sm:text-sm transition-colors truncate ${
-                  isHomePage
-                    ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-emerald-200'
-                    : 'text-stone-900 group-hover:text-emerald-700'
-                }`}
-              >
+              <span className="font-extrabold text-xs sm:text-sm text-black transition-colors truncate">
                 About Wina Juice
               </span>
             </div>
-            <ChevronRight
-              className={`w-4 h-4 stroke-[2.5] transition-all shrink-0 ml-1.5 ${
-                isHomePage
-                  ? 'text-emerald-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-white group-hover:translate-x-0.5'
-                  : 'text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5'
-              }`}
-            />
+            <ChevronRight className="w-4 h-4 stroke-[2.5] text-stone-500 group-hover:text-black group-hover:translate-x-0.5 transition-all shrink-0 ml-1.5" />
           </Link>
 
           {/* 2. QR Code Section */}
@@ -303,38 +283,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               closeMobileMenu();
               onOpenQRCode();
             }}
-            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl bg-transparent border-0 transition-all text-left group ${
-              isHomePage
-                ? 'hover:bg-white/10 active:bg-white/15'
-                : 'hover:bg-emerald-500/10 active:bg-emerald-500/15'
-            }`}
+            className="w-full flex items-center justify-between px-2.5 py-2 rounded-xl bg-white text-black hover:bg-stone-100 transition-all text-left group shadow-sm"
             title="View & Download Digital QR Code"
           >
             <div className="flex items-center gap-2.5 min-w-0">
-              <div
-                className={`w-7 h-7 flex items-center justify-center shrink-0 bg-transparent group-hover:scale-110 transition-transform ${
-                  isHomePage ? 'text-emerald-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]' : 'text-emerald-700'
-                }`}
-              >
+              <div className="w-7 h-7 flex items-center justify-center shrink-0 bg-transparent text-emerald-700 group-hover:scale-110 transition-transform">
                 <QrCode className="w-4 h-4 stroke-[2.5]" />
               </div>
-              <span
-                className={`font-extrabold text-xs sm:text-sm transition-colors truncate ${
-                  isHomePage
-                    ? 'text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-emerald-200'
-                    : 'text-stone-900 group-hover:text-emerald-700'
-                }`}
-              >
+              <span className="font-extrabold text-xs sm:text-sm text-black transition-colors truncate">
                 Digital QR Code
               </span>
             </div>
-            <ChevronRight
-              className={`w-4 h-4 stroke-[2.5] transition-all shrink-0 ml-1.5 ${
-                isHomePage
-                  ? 'text-emerald-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] group-hover:text-white group-hover:translate-x-0.5'
-                  : 'text-stone-400 group-hover:text-emerald-700 group-hover:translate-x-0.5'
-              }`}
-            />
+            <ChevronRight className="w-4 h-4 stroke-[2.5] text-stone-500 group-hover:text-black group-hover:translate-x-0.5 transition-all shrink-0 ml-1.5" />
           </button>
         </div>
       )}
