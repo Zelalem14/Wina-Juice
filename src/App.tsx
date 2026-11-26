@@ -47,8 +47,8 @@ function AppContent() {
         onOpenCallModal={() => setIsCallModalOpen(true)}
       />
 
-      {/* Page Routing (pb-16 on mobile for bottom navigation bar clearance) */}
-      <main className={`flex-1 flex flex-col ${isHomePage ? 'pb-12 md:pb-0 bg-emerald-950' : 'pb-16 md:pb-0'}`}>
+      {/* Page Routing (pb-20 on mobile for bottom navigation bar clearance) */}
+      <main className={`flex-1 flex flex-col ${isHomePage ? 'pb-20 sm:pb-16 md:pb-0 bg-emerald-950' : 'pb-20 sm:pb-16 md:pb-0'}`}>
         <Routes>
           {/* Home Page (Short, clean, focused hero section) */}
           <Route path="/" element={<HomePage />} />
